@@ -1,0 +1,1457 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>IQUE Green India — Devoted for Human Health & Environments</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;0,700;1,300;1,400&family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root {
+  --green-dark: #0a2e1a;
+  --green-mid: #1a5c32;
+  --green-bright: #2d9e5f;
+  --green-light: #4eca84;
+  --lime: #b5e550;
+  --cream: #f5f2eb;
+  --warm-white: #faf9f6;
+  --text-dark: #0a1a0f;
+  --text-mid: #2c4a35;
+  --text-muted: #6b8c74;
+  --orange: #e8621a;
+}
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+body {
+  font-family: 'Outfit', sans-serif;
+  background: var(--warm-white);
+  color: var(--text-dark);
+  overflow-x: hidden;
+}
+
+/* NAV */
+nav {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 1.25rem 4rem;
+  background: rgba(10, 26, 15, 0.92);
+  backdrop-filter: blur(12px);
+  border-bottom: 1px solid rgba(77, 202, 132, 0.15);
+}
+.nav-logo {
+  display: flex; align-items: center;
+}
+.nav-links { display: flex; gap: 2.5rem; list-style: none; }
+.nav-links a {
+  font-size: .875rem; font-weight: 400; color: rgba(255,255,255,.65);
+  text-decoration: none; letter-spacing: .02em;
+  transition: color .2s;
+}
+.nav-links a:hover { color: var(--lime); }
+.nav-cta {
+  background: var(--lime); color: var(--green-dark);
+  font-family: 'Cormorant Garamond', serif; font-weight: 700;
+  font-size: .8rem; letter-spacing: .05em; text-transform: uppercase;
+  padding: .65rem 1.5rem; border-radius: 2px;
+  text-decoration: none; transition: background .2s, transform .15s;
+}
+.nav-cta:hover { background: #c8f060; transform: translateY(-1px); }
+
+/* HERO */
+.hero {
+  min-height: 100vh;
+  background: var(--green-dark);
+  display: grid; grid-template-columns: 1fr 1fr;
+  padding: 0 4rem; padding-top: 5rem;
+  position: relative; overflow: hidden;
+}
+.hero::before {
+  content: '';
+  position: absolute; top: -30%; right: -10%;
+  width: 600px; height: 600px;
+  background: radial-gradient(circle, rgba(45,158,95,.25) 0%, transparent 70%);
+  pointer-events: none;
+}
+.hero::after {
+  content: '';
+  position: absolute; bottom: 0; left: 0; right: 0;
+  height: 120px;
+  background: linear-gradient(to bottom, transparent, var(--warm-white));
+  pointer-events: none;
+}
+.hero-left {
+  display: flex; flex-direction: column; justify-content: center;
+  padding: 4rem 0; padding-right: 3rem; position: relative; z-index: 2;
+}
+.hero-eyebrow {
+  display: inline-flex; align-items: center; gap: .5rem;
+  font-size: .75rem; font-weight: 500; letter-spacing: .12em; text-transform: uppercase;
+  color: var(--lime); margin-bottom: 2rem;
+}
+.hero-eyebrow::before {
+  content: ''; width: 28px; height: 1px; background: var(--lime);
+}
+h1 {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(3rem, 5vw, 4.5rem);
+  font-weight: 800; line-height: 1.0;
+  color: #fff; margin-bottom: 1.75rem;
+  letter-spacing: -.03em;
+}
+h1 em {
+  font-style: normal; color: var(--lime);
+  display: block;
+}
+.hero-desc {
+  font-size: 1.05rem; line-height: 1.75; color: rgba(255,255,255,.6);
+  max-width: 420px; margin-bottom: 2.5rem; font-weight: 300;
+}
+.hero-actions { display: flex; gap: 1rem; align-items: center; }
+.btn-primary {
+  background: var(--lime); color: var(--green-dark);
+  font-family: 'Cormorant Garamond', serif; font-weight: 700;
+  font-size: .85rem; letter-spacing: .04em; text-transform: uppercase;
+  padding: 1rem 2rem; border-radius: 2px;
+  text-decoration: none; transition: all .2s;
+  border: none; cursor: pointer;
+}
+.btn-primary:hover { background: #c8f060; transform: translateY(-2px); }
+.btn-ghost {
+  color: rgba(255,255,255,.7); font-size: .875rem;
+  text-decoration: none; display: flex; align-items: center; gap: .5rem;
+  transition: color .2s;
+}
+.btn-ghost:hover { color: #fff; }
+.btn-ghost::after { content: '→'; transition: transform .2s; }
+.btn-ghost:hover::after { transform: translateX(4px); }
+
+.hero-stats {
+  display: flex; gap: 2.5rem; margin-top: 3.5rem;
+  padding-top: 2rem;
+  border-top: 1px solid rgba(255,255,255,.1);
+}
+.stat-item { }
+.stat-num {
+  font-family: 'Cormorant Garamond', serif; font-size: 2rem; font-weight: 800;
+  color: var(--lime); line-height: 1;
+}
+.stat-label { font-size: .8rem; color: rgba(255,255,255,.4); margin-top: .25rem; letter-spacing: .04em; }
+
+.hero-right {
+  display: flex; flex-direction: column; justify-content: flex-end;
+  padding: 2rem 0; position: relative; z-index: 2;
+}
+.hero-img-grid {
+  display: grid; grid-template-columns: 1fr 1fr; gap: .75rem;
+  transform: translateY(40px);
+}
+.hero-img {
+  border-radius: 4px; overflow: hidden;
+  position: relative;
+}
+.hero-img:first-child { grid-column: 1 / -1; height: 240px; }
+.hero-img:not(:first-child) { height: 160px; }
+.hero-img img { width: 100%; height: 100%; object-fit: cover; display: block; }
+.img-placeholder {
+  width: 100%; height: 100%;
+  background: var(--green-mid);
+  display: flex; align-items: center; justify-content: center;
+  font-size: .75rem; color: rgba(255,255,255,.3); letter-spacing: .05em;
+}
+.hero-img-badge {
+  position: absolute; bottom: .75rem; left: .75rem;
+  background: rgba(10,26,15,.85); backdrop-filter: blur(8px);
+  color: var(--lime); font-size: .7rem; font-weight: 500;
+  padding: .35rem .75rem; border-radius: 2px; letter-spacing: .06em;
+  text-transform: uppercase;
+}
+
+/* MARQUEE */
+.marquee-bar {
+  background: var(--lime); overflow: hidden;
+  padding: .9rem 0;
+}
+.marquee-track {
+  display: flex; gap: 0; white-space: nowrap;
+  animation: marquee 25s linear infinite;
+}
+.marquee-item {
+  font-family: 'Cormorant Garamond', serif; font-size: .75rem;
+  font-weight: 700; letter-spacing: .08em; text-transform: uppercase;
+  color: var(--green-dark); padding: 0 2.5rem;
+  display: flex; align-items: center; gap: 1rem;
+}
+.marquee-item::after { content: '✦'; font-size: .6rem; }
+@keyframes marquee { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+
+/* CLIENTS */
+.clients-section {
+  padding: 5rem 4rem;
+  background: var(--warm-white);
+}
+.section-label {
+  font-size: .75rem; font-weight: 500; letter-spacing: .12em;
+  text-transform: uppercase; color: var(--text-muted);
+  margin-bottom: 3rem; display: flex; align-items: center; gap: 1rem;
+}
+.section-label::after { content: ''; flex: 1; height: 1px; background: #e0ddd5; }
+.clients-grid {
+  display: grid; grid-template-columns: repeat(5, 1fr); gap: 1px;
+  border: 1px solid #e5e2d8; border-radius: 4px; overflow: hidden;
+  background: #e5e2d8;
+}
+.client-item {
+  background: var(--warm-white);
+  padding: 1.75rem 1.5rem;
+  display: flex; flex-direction: column; gap: .35rem;
+  transition: background .2s;
+}
+.client-item:hover { background: #f0ede4; }
+.client-name {
+  font-family: 'Cormorant Garamond', serif; font-size: .8rem; font-weight: 700;
+  color: var(--text-dark); line-height: 1.3;
+}
+.client-type { font-size: .7rem; color: var(--text-muted); }
+
+/* SERVICES */
+.services-section {
+  padding: 6rem 4rem;
+  background: var(--green-dark);
+  position: relative; overflow: hidden;
+}
+.services-section::before {
+  content: 'SERVICES';
+  position: absolute; top: 2rem; right: 3rem;
+  font-family: 'Cormorant Garamond', serif; font-size: 8rem; font-weight: 800;
+  color: rgba(255,255,255,.03); letter-spacing: -.05em;
+  pointer-events: none; user-select: none;
+  line-height: 1;
+}
+.services-header {
+  display: flex; justify-content: space-between; align-items: flex-end;
+  margin-bottom: 3.5rem;
+}
+h2 {
+  font-family: 'Cormorant Garamond', serif; font-size: clamp(2rem, 3.5vw, 3rem);
+  font-weight: 800; line-height: 1.1; letter-spacing: -.03em;
+}
+.services-header h2 { color: #fff; }
+.services-header h2 span { color: var(--lime); }
+.services-header p { color: rgba(255,255,255,.45); font-size: .9rem; max-width: 260px; text-align: right; line-height: 1.6; }
+.services-grid {
+  display: grid; grid-template-columns: repeat(3, 1fr); gap: 1px;
+  background: rgba(255,255,255,.08);
+  border: 1px solid rgba(255,255,255,.08);
+  border-radius: 4px; overflow: hidden;
+}
+.service-card {
+  background: rgba(255,255,255,.03);
+  padding: 2.25rem 2rem;
+  transition: background .25s; cursor: default;
+  position: relative;
+}
+.service-card:hover { background: rgba(77, 202, 132, .08); }
+.service-icon {
+  width: 44px; height: 44px; margin-bottom: 1.5rem;
+  background: rgba(181, 229, 80, .12);
+  border-radius: 4px; display: flex; align-items: center; justify-content: center;
+  font-size: 1.25rem;
+}
+.service-name {
+  font-family: 'Cormorant Garamond', serif; font-size: 1rem; font-weight: 700;
+  color: #fff; margin-bottom: .75rem;
+}
+.service-desc { font-size: .85rem; color: rgba(255,255,255,.45); line-height: 1.65; }
+.service-tag {
+  margin-top: 1.25rem;
+  display: inline-block; font-size: .65rem; font-weight: 600;
+  letter-spacing: .08em; text-transform: uppercase;
+  color: var(--lime); background: rgba(181, 229, 80, .1);
+  padding: .3rem .75rem; border-radius: 2px;
+}
+
+/* WHY US */
+.why-section {
+  padding: 6rem 4rem;
+  background: var(--cream);
+  display: grid; grid-template-columns: 1fr 1fr; gap: 5rem; align-items: center;
+}
+.why-left h2 { color: var(--text-dark); margin-bottom: 1.5rem; }
+.why-left h2 span { color: var(--green-bright); }
+.why-left p { color: var(--text-muted); font-size: 1rem; line-height: 1.8; margin-bottom: 2rem; }
+.why-points { display: flex; flex-direction: column; gap: 1.25rem; }
+.why-point {
+  display: flex; gap: 1rem; align-items: flex-start;
+  padding: 1.25rem; background: #fff;
+  border-radius: 4px; border: 1px solid #e5e2d8;
+  transition: border-color .2s, transform .2s;
+}
+.why-point:hover { border-color: var(--green-bright); transform: translateX(4px); }
+.why-point-icon {
+  width: 36px; height: 36px; flex-shrink: 0;
+  background: var(--green-dark); border-radius: 4px;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 1rem; color: var(--lime);
+}
+.why-point-text h4 {
+  font-family: 'Cormorant Garamond', serif; font-size: .9rem; font-weight: 700;
+  color: var(--text-dark); margin-bottom: .25rem;
+}
+.why-point-text p { font-size: .82rem; color: var(--text-muted); line-height: 1.55; }
+
+.why-right {
+  display: grid; grid-template-columns: 1fr 1fr; gap: 1px;
+  background: #ccc; border-radius: 4px; overflow: hidden;
+}
+.metric-box {
+  background: var(--green-dark); padding: 2.5rem 2rem;
+  display: flex; flex-direction: column; justify-content: space-between;
+}
+.metric-box:nth-child(2) { background: var(--green-mid); }
+.metric-box:nth-child(3) { background: var(--green-mid); }
+.metric-box:nth-child(4) { background: var(--lime); }
+.metric-box .num {
+  font-family: 'Cormorant Garamond', serif; font-size: 3rem; font-weight: 800;
+  line-height: 1; color: var(--lime);
+}
+.metric-box:nth-child(4) .num { color: var(--green-dark); }
+.metric-box .label { font-size: .8rem; color: rgba(255,255,255,.55); margin-top: .5rem; }
+.metric-box:nth-child(4) .label { color: rgba(10,26,15,.6); }
+.metric-box .desc { font-size: .75rem; color: rgba(255,255,255,.35); line-height: 1.5; }
+.metric-box:nth-child(4) .desc { color: rgba(10,26,15,.4); }
+
+/* CLIENTS SECTION */
+.segments-section {
+  padding: 6rem 4rem;
+  background: var(--warm-white);
+}
+.segments-header { margin-bottom: 3.5rem; }
+.segments-header h2 { color: var(--text-dark); }
+.segments-header h2 span { color: var(--green-bright); }
+.segments-header p { color: var(--text-muted); margin-top: .75rem; max-width: 480px; line-height: 1.7; }
+.segments-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; }
+.seg-card {
+  border: 1px solid #e5e2d8; border-radius: 4px; overflow: hidden;
+  transition: transform .25s, box-shadow .25s;
+}
+.seg-card:hover { transform: translateY(-4px); box-shadow: 0 12px 32px rgba(10,46,26,.1); }
+.seg-card-top {
+  height: 140px; background: var(--green-dark);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 3rem; position: relative; overflow: hidden;
+}
+.seg-card-top::after {
+  content: attr(data-label);
+  position: absolute; bottom: .75rem; left: .75rem;
+  font-size: .65rem; font-weight: 700; letter-spacing: .1em; text-transform: uppercase;
+  color: var(--lime); background: rgba(10,26,15,.7);
+  padding: .25rem .6rem; border-radius: 2px;
+}
+.seg-card-body { padding: 1.5rem; }
+.seg-card-title {
+  font-family: 'Cormorant Garamond', serif; font-size: 1rem; font-weight: 700;
+  color: var(--text-dark); margin-bottom: .5rem;
+}
+.seg-card-desc { font-size: .85rem; color: var(--text-muted); line-height: 1.65; }
+.seg-card-price {
+  margin-top: 1rem; font-family: 'Cormorant Garamond', serif;
+  font-size: .9rem; font-weight: 700; color: var(--green-bright);
+}
+
+/* CONTACT */
+.contact-section {
+  padding: 6rem 4rem;
+  background: var(--green-dark);
+  display: grid; grid-template-columns: 1fr 1fr; gap: 5rem;
+}
+.contact-left h2 { color: #fff; margin-bottom: 1rem; }
+.contact-left h2 span { color: var(--lime); }
+.contact-left p { color: rgba(255,255,255,.5); line-height: 1.75; margin-bottom: 2.5rem; }
+.contact-info { display: flex; flex-direction: column; gap: 1.25rem; }
+.contact-row {
+  display: flex; gap: 1rem; align-items: flex-start;
+}
+.contact-icon {
+  width: 40px; height: 40px; flex-shrink: 0;
+  border: 1px solid rgba(181,229,80,.2); border-radius: 4px;
+  display: flex; align-items: center; justify-content: center; font-size: 1rem;
+}
+.contact-detail h4 { font-family: 'Cormorant Garamond', serif; font-size: .85rem; font-weight: 700; color: var(--lime); margin-bottom: .2rem; }
+.contact-detail p { font-size: .85rem; color: rgba(255,255,255,.5); }
+
+.contact-form { display: flex; flex-direction: column; gap: 1rem; }
+.contact-form input, .contact-form textarea, .contact-form select {
+  width: 100%;
+  background: rgba(255,255,255,.06); border: 1px solid rgba(255,255,255,.12);
+  border-radius: 4px; padding: .9rem 1.1rem;
+  color: #fff; font-family: 'Outfit', sans-serif; font-size: .9rem;
+  outline: none; transition: border-color .2s;
+  -webkit-appearance: none;
+}
+.contact-form input::placeholder, .contact-form textarea::placeholder { color: rgba(255,255,255,.3); }
+.contact-form input:focus, .contact-form textarea:focus, .contact-form select:focus {
+  border-color: var(--lime);
+}
+.contact-form select { color: rgba(255,255,255,.6); }
+.contact-form select option { background: var(--green-dark); }
+.contact-form textarea { height: 120px; resize: none; }
+.form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+.submit-btn {
+  background: var(--lime); color: var(--green-dark);
+  font-family: 'Cormorant Garamond', serif; font-weight: 700;
+  font-size: .85rem; letter-spacing: .05em; text-transform: uppercase;
+  padding: 1rem 2rem; border-radius: 2px;
+  border: none; cursor: pointer; transition: background .2s, transform .15s;
+  text-align: center; width: 100%;
+}
+.submit-btn:hover { background: #c8f060; transform: translateY(-1px); }
+
+/* FOOTER */
+footer {
+  background: #050f08;
+  padding: 2rem 4rem;
+  display: flex; justify-content: space-between; align-items: center;
+}
+.footer-logo { display:flex; align-items:center; }
+.footer-copy { font-size: .78rem; color: rgba(255,255,255,.25); }
+.footer-links { display: flex; gap: 1.5rem; }
+.footer-links a { font-size: .78rem; color: rgba(255,255,255,.3); text-decoration: none; transition: color .2s; }
+.footer-links a:hover { color: var(--lime); }
+
+/* ANIMATIONS */
+.fade-up {
+  opacity: 0; transform: translateY(24px);
+  transition: opacity .6s ease, transform .6s ease;
+}
+.fade-up.visible { opacity: 1; transform: translateY(0); }
+
+/* TESTIMONIALS */
+.testimonials-section {
+  padding: 6rem 4rem;
+  background: var(--green-dark);
+}
+.testimonials-section .section-label { color: rgba(181,229,80,.6); }
+.testimonials-section .section-label::after { background: rgba(181,229,80,.15); }
+.testimonials-header { margin-bottom: 3rem; }
+.testimonials-header h2 { color: #fff; }
+.testimonials-header h2 span { color: var(--lime); }
+.testimonials-grid {
+  display: grid; grid-template-columns: repeat(3,1fr); gap: 1.5rem;
+}
+.testi-card {
+  background: rgba(255,255,255,.05);
+  border: 1px solid rgba(255,255,255,.08);
+  border-radius: 8px; padding: 2rem 1.75rem;
+  transition: background .25s, transform .25s;
+}
+.testi-card:hover { background: rgba(77,202,132,.08); transform: translateY(-3px); }
+.testi-stars { color: var(--lime); font-size: 1rem; letter-spacing: 2px; margin-bottom: 1rem; }
+.testi-quote {
+  font-size: .95rem; line-height: 1.75; color: rgba(255,255,255,.7);
+  font-weight: 300; font-style: italic; margin-bottom: 1.5rem;
+}
+.testi-author { display: flex; align-items: center; gap: .85rem; }
+.testi-photo {
+  width: 48px; height: 48px; border-radius: 50%;
+  overflow: hidden; flex-shrink: 0;
+  border: 2px solid rgba(181,229,80,.3);
+  background: var(--green-mid);
+  display: flex; align-items: center; justify-content: center;
+}
+.testi-photo img { width:100%; height:100%; object-fit:cover; }
+.testi-initials {
+  font-family: 'Cormorant Garamond', serif; font-weight: 700;
+  font-size: .85rem; color: var(--lime);
+}
+.testi-name {
+  font-family: 'Cormorant Garamond', serif; font-weight: 700;
+  font-size: .9rem; color: #fff;
+}
+.testi-role { font-size: .75rem; color: rgba(255,255,255,.4); margin-top: .15rem; }
+
+/* SOCIAL LINKS */
+.social-bar {
+  background: var(--cream); padding: 2.5rem 4rem;
+  display: flex; align-items: center; justify-content: space-between;
+  border-bottom: 1px solid #e5e2d8;
+}
+.social-bar-label {
+  font-family: 'Cormorant Garamond', serif; font-weight: 700; font-size: .85rem;
+  color: var(--text-dark);
+}
+.social-links { display: flex; gap: .75rem; }
+.social-link {
+  display: flex; align-items: center; gap: .5rem;
+  padding: .6rem 1.1rem;
+  background: var(--green-dark); color: #fff;
+  border-radius: 4px; text-decoration: none;
+  font-size: .8rem; font-weight: 500;
+  transition: background .2s, transform .15s;
+}
+.social-link:hover { background: var(--green-mid); transform: translateY(-1px); }
+.social-link svg { width:16px; height:16px; fill:currentColor; }
+.footer-social { display:flex; gap:.75rem; }
+.footer-social a {
+  width:32px; height:32px; border-radius:4px;
+  background: rgba(255,255,255,.08);
+  display:flex; align-items:center; justify-content:center;
+  color: rgba(255,255,255,.5); text-decoration:none;
+  font-size:.75rem; transition: background .2s, color .2s;
+}
+.footer-social a:hover { background: var(--lime); color: var(--green-dark); }
+
+
+/* ANIMATIONS */
+@keyframes fadeInUp {
+  from { opacity: 0; transform: translateY(32px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+@keyframes fadeInLeft {
+  from { opacity: 0; transform: translateX(-28px); }
+  to   { opacity: 1; transform: translateX(0); }
+}
+@keyframes scaleIn {
+  from { opacity: 0; transform: scale(0.94); }
+  to   { opacity: 1; transform: scale(1); }
+}
+@keyframes lineGrow {
+  from { width: 0; }
+  to   { width: 28px; }
+}
+@keyframes countUp {
+  from { opacity: 0; transform: translateY(8px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+@keyframes shimmer {
+  0%   { background-position: -400px 0; }
+  100% { background-position: 400px 0; }
+}
+@keyframes floatY {
+  0%, 100% { transform: translateY(0px); }
+  50%       { transform: translateY(-8px); }
+}
+@keyframes borderPulse {
+  0%, 100% { border-color: rgba(181,229,80,.2); }
+  50%       { border-color: rgba(181,229,80,.5); }
+}
+
+/* Hero entrance animations */
+.hero-left { animation: fadeInLeft .9s cubic-bezier(.22,1,.36,1) both; animation-delay: .15s; }
+.hero-right { animation: scaleIn 1s cubic-bezier(.22,1,.36,1) both; animation-delay: .3s; }
+.hero-eyebrow { animation: fadeInUp .7s ease both; animation-delay: .2s; }
+.hero-eyebrow::before { animation: lineGrow .6s ease both; animation-delay: .5s; }
+h1 { animation: fadeInUp .8s cubic-bezier(.22,1,.36,1) both; animation-delay: .35s; }
+.hero-desc { animation: fadeInUp .8s ease both; animation-delay: .5s; }
+.hero-actions { animation: fadeInUp .7s ease both; animation-delay: .65s; }
+.hero-stats { animation: fadeInUp .7s ease both; animation-delay: .8s; }
+
+/* Stat counter animation */
+.stat-num {
+  animation: countUp .6s ease both;
+  font-variant-numeric: tabular-nums;
+}
+.stat-item:nth-child(1) .stat-num { animation-delay: .9s; }
+.stat-item:nth-child(2) .stat-num { animation-delay: 1.05s; }
+.stat-item:nth-child(3) .stat-num { animation-delay: 1.2s; }
+
+/* Floating images */
+.hero-img:first-child { animation: floatY 6s ease-in-out infinite; }
+.hero-img:nth-child(2) { animation: floatY 6s ease-in-out infinite; animation-delay: 1s; }
+.hero-img:nth-child(3) { animation: floatY 6s ease-in-out infinite; animation-delay: 2s; }
+
+/* Nav logo pulse on load */
+.nav-logo img { animation: scaleIn .5s ease both; }
+
+/* Card hover lifts */
+.client-item, .service-card, .seg-card, .why-point, .testi-card {
+  transition: transform .3s cubic-bezier(.22,1,.36,1), box-shadow .3s ease, background .2s;
+}
+.service-card:hover { transform: translateY(-6px); }
+.seg-card:hover { transform: translateY(-6px); box-shadow: 0 20px 48px rgba(10,46,26,.12); }
+.why-point:hover { transform: translateX(6px); }
+.testi-card:hover { transform: translateY(-4px); }
+
+/* Section reveal - scroll triggered via JS */
+.reveal {
+  opacity: 0; transform: translateY(28px);
+  transition: opacity .7s cubic-bezier(.22,1,.36,1), transform .7s cubic-bezier(.22,1,.36,1);
+}
+.reveal.visible { opacity: 1; transform: translateY(0); }
+.reveal-delay-1 { transition-delay: .1s; }
+.reveal-delay-2 { transition-delay: .2s; }
+.reveal-delay-3 { transition-delay: .3s; }
+.reveal-delay-4 { transition-delay: .4s; }
+
+/* Button animations */
+.btn-primary {
+  position: relative; overflow: hidden;
+  transition: all .3s cubic-bezier(.22,1,.36,1);
+}
+.btn-primary::after {
+  content: '';
+  position: absolute; inset: 0;
+  background: rgba(255,255,255,.15);
+  transform: translateX(-100%);
+  transition: transform .3s ease;
+}
+.btn-primary:hover::after { transform: translateX(0); }
+.btn-primary:hover { transform: translateY(-3px); box-shadow: 0 10px 32px rgba(181,229,80,.3); }
+
+/* Metric boxes pop */
+.metric-box {
+  transition: transform .3s cubic-bezier(.22,1,.36,1);
+  animation: scaleIn .5s cubic-bezier(.22,1,.36,1) both;
+}
+.metric-box:nth-child(1) { animation-delay: .2s; }
+.metric-box:nth-child(2) { animation-delay: .35s; }
+.metric-box:nth-child(3) { animation-delay: .5s; }
+.metric-box:nth-child(4) { animation-delay: .65s; }
+.metric-box:hover { transform: scale(1.03); }
+
+/* Nav link underline animation */
+.nav-links a {
+  position: relative;
+}
+.nav-links a::after {
+  content: '';
+  position: absolute; bottom: -4px; left: 0;
+  width: 0; height: 1px;
+  background: var(--lime);
+  transition: width .25s ease;
+}
+.nav-links a:hover::after { width: 100%; }
+
+/* CTA border pulse */
+.nav-cta { animation: borderPulse 3s ease infinite; }
+
+/* Premium h1 typography tweak */
+h1 {
+  font-weight: 600 !important;
+  letter-spacing: -.02em !important;
+  font-style: italic;
+}
+h1 em {
+  font-style: normal !important;
+  font-weight: 700 !important;
+}
+h2 {
+  font-weight: 600;
+  letter-spacing: -.02em;
+}
+
+/* Body font size bump for Outfit */
+body { font-size: 16px; letter-spacing: .01em; }
+.hero-desc { font-size: 1.05rem; line-height: 1.8; font-weight: 300; letter-spacing: .015em; }
+
+/* Improve service card typography */
+.service-name { font-size: 1.05rem; letter-spacing: -.01em; }
+.seg-card-title { font-size: 1.05rem; letter-spacing: -.01em; }
+
+/* Testimonial quote style */
+.testi-quote { font-family: 'Cormorant Garamond', serif; font-size: 1.05rem; font-style: italic; line-height: 1.8; }
+.testi-name { font-family: 'Cormorant Garamond', serif; font-size: 1rem; font-weight: 600; }
+
+/* Client grid text */
+.client-name { font-size: .85rem; letter-spacing: .01em; }
+
+
+/* ── SERVICES NEW ── */
+.section-eyebrow {
+  font-size: .72rem; font-weight: 600; letter-spacing: .14em;
+  text-transform: uppercase; color: var(--lime);
+  margin-bottom: .6rem; display: block;
+}
+.services-header {
+  display: flex; justify-content: space-between; align-items: flex-end;
+  margin-bottom: 3rem; gap: 2rem;
+}
+.services-header-left h2 { color:#fff; margin-top:.4rem; }
+.services-header-left h2 span { color:var(--lime); }
+.services-header-right {
+  color:rgba(255,255,255,.45); font-size:.9rem; max-width:280px;
+  text-align:right; line-height:1.7; align-self:flex-end;
+}
+.services-grid-new {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.5px;
+  background: rgba(255,255,255,.06);
+  border: 1.5px solid rgba(255,255,255,.06);
+  border-radius: 8px;
+  overflow: hidden;
+}
+.svc-card {
+  background: rgba(255,255,255,.02);
+  display: flex; flex-direction: column;
+  transition: background .3s ease;
+  cursor: default;
+}
+.svc-card:hover { background: rgba(45,158,95,.12); }
+.svc-img {
+  position: relative; height: 200px; overflow: hidden;
+}
+.svc-img img {
+  width: 100%; height: 100%; object-fit: cover;
+  transition: transform .6s cubic-bezier(.22,1,.36,1);
+  filter: brightness(.75) saturate(1.1);
+}
+.svc-card:hover .svc-img img { transform: scale(1.06); filter: brightness(.85) saturate(1.2); }
+.svc-overlay {
+  position: absolute; inset: 0;
+  background: linear-gradient(to top, rgba(10,26,15,.7) 0%, transparent 55%);
+  display: flex; align-items: flex-end; padding: .85rem 1rem;
+}
+.svc-tag-pill {
+  font-size: .65rem; font-weight: 700; letter-spacing: .08em; text-transform: uppercase;
+  background: var(--lime); color: var(--green-dark);
+  padding: .3rem .75rem; border-radius: 2px;
+}
+.svc-body {
+  padding: 1.5rem 1.5rem 1.75rem;
+  flex: 1; display: flex; flex-direction: column; gap: .5rem;
+}
+.svc-num {
+  font-family: 'Cormorant Garamond', serif; font-size: .85rem;
+  color: rgba(181,229,80,.4); letter-spacing: .06em;
+}
+.svc-name {
+  font-family: 'Cormorant Garamond', serif; font-size: 1.25rem; font-weight: 600;
+  color: #fff; line-height: 1.2; letter-spacing: -.01em;
+}
+.svc-desc {
+  font-size: .83rem; color: rgba(255,255,255,.5); line-height: 1.65; flex: 1;
+}
+.svc-cta {
+  display: inline-flex; align-items: center; gap: .35rem;
+  font-size: .78rem; font-weight: 600; color: var(--lime);
+  text-decoration: none; letter-spacing: .04em; margin-top: .5rem;
+  transition: gap .2s ease, opacity .2s;
+  opacity: 0;
+}
+.svc-card:hover .svc-cta { opacity: 1; gap: .6rem; }
+
+/* ── CLIENTS NEW ── */
+.clients-section { padding: 5rem 4rem; background: var(--warm-white); }
+.clients-top {
+  display: flex; justify-content: space-between; align-items: flex-start;
+  margin-bottom: 3rem; gap: 2rem; flex-wrap: wrap;
+}
+.clients-stats-row {
+  display: flex; align-items: center; gap: 0;
+  background: var(--green-dark); border-radius: 8px;
+  padding: 1.5rem 2rem; flex-shrink: 0;
+  align-self: center;
+}
+.cstat { text-align: center; padding: 0 1.5rem; }
+.cstat-num {
+  font-family: 'Cormorant Garamond', serif; font-size: 2.2rem; font-weight: 700;
+  color: var(--lime); line-height: 1;
+}
+.cstat-num span { font-size: 1.4rem; }
+.cstat-label { font-size: .7rem; color: rgba(255,255,255,.4); margin-top: .25rem; letter-spacing: .05em; text-transform: uppercase; }
+.cstat-divider { width: 1px; height: 40px; background: rgba(255,255,255,.1); }
+
+.clients-bento {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-auto-rows: 140px;
+  gap: 10px;
+}
+.cbento-card {
+  border-radius: 8px; padding: 1.25rem 1.25rem 1rem;
+  display: flex; flex-direction: column; justify-content: flex-end;
+  position: relative; overflow: hidden;
+  transition: transform .3s cubic-bezier(.22,1,.36,1), box-shadow .3s ease;
+  cursor: default;
+}
+.cbento-card:hover { transform: translateY(-4px) scale(1.01); box-shadow: 0 16px 40px rgba(0,0,0,.25); }
+.cbento-hero { grid-column: span 2; grid-row: span 2; }
+.cbento-featured { grid-column: span 2; }
+.cbento-wide { grid-column: span 2; }
+.cbento-cta { display: flex; flex-direction: column; justify-content: center; grid-column: span 2; }
+.cbento-img-bg {
+  position: absolute; inset: 0;
+  background-size: cover; background-position: center;
+  opacity: .2; border-radius: 8px;
+  transition: opacity .3s;
+}
+.cbento-card:hover .cbento-img-bg { opacity: .3; }
+.cbento-icon {
+  font-size: 1.5rem; margin-bottom: .6rem;
+  position: relative; z-index: 1;
+}
+.cbento-name {
+  font-family: 'Cormorant Garamond', serif; font-size: 1.05rem; font-weight: 600;
+  color: #fff; line-height: 1.2; position: relative; z-index: 1;
+}
+.cbento-hero .cbento-name { font-size: 1.5rem; }
+.cbento-type { font-size: .72rem; color: rgba(255,255,255,.5); margin-top: .2rem; position: relative; z-index: 1; }
+.cbento-badge {
+  display: inline-block; font-size: .6rem; font-weight: 700; letter-spacing: .08em;
+  text-transform: uppercase; padding: .25rem .6rem; border-radius: 2px;
+  background: rgba(255,255,255,.12); color: rgba(255,255,255,.7);
+  margin-bottom: .5rem; align-self: flex-start;
+  position: relative; z-index: 1;
+}
+
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-logo"><img src="data:image/png;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/4gHYSUNDX1BST0ZJTEUAAQEAAAHIAAAAAAQwAABtbnRyUkdCIFhZWiAH4AABAAEAAAAAAABhY3NwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQAA9tYAAQAAAADTLQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAlkZXNjAAAA8AAAACRyWFlaAAABFAAAABRnWFlaAAABKAAAABRiWFlaAAABPAAAABR3dHB0AAABUAAAABRyVFJDAAABZAAAAChnVFJDAAABZAAAAChiVFJDAAABZAAAAChjcHJ0AAABjAAAADxtbHVjAAAAAAAAAAEAAAAMZW5VUwAAAAgAAAAcAHMAUgBHAEJYWVogAAAAAAAAb6IAADj1AAADkFhZWiAAAAAAAABimQAAt4UAABjaWFlaIAAAAAAAACSgAAAPhAAAts9YWVogAAAAAAAA9tYAAQAAAADTLXBhcmEAAAAAAAQAAAACZmYAAPKnAAANWQAAE9AAAApbAAAAAAAAAABtbHVjAAAAAAAAAAEAAAAMZW5VUwAAACAAAAAcAEcAbwBvAGcAbABlACAASQBuAGMALgAgADIAMAAxADb/2wBDAAUDBAQEAwUEBAQFBQUGBwwIBwcHBw8LCwkMEQ8SEhEPERETFhwXExQaFRERGCEYGh0dHx8fExciJCIeJBweHx7/2wBDAQUFBQcGBw4ICA4eFBEUHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh7/wAARCAB+ASQDASIAAhEBAxEB/8QAHAABAAICAwEAAAAAAAAAAAAAAAYHBAUCAwgB/8QARhAAAQQBAgMFBQMIBwcFAAAAAQACAwQFBhESITEHE0FRYRQicYGRFTKhFyNCU3KxwdEIFiQzUoKyJTQ2YnOS0kNUlMLw/8QAGwEBAAIDAQEAAAAAAAAAAAAAAAIDAQQFBgf/xAA2EQABAwIEAwYFAwMFAAAAAAABAAIDBBEFEiExE0FRFCJhcZGxBjKBocFy0eFSYvAVIzNC8f/aAAwDAQACEQMRAD8ApxERQXlUREREREREREREREREREPREXfWqT2TtE3dZc+DvwsDnxnYjdTHsoxte/ajbN4u8lb+PwmndW4mxDiw6LIVGnva0oHEQOXE0jqFAuANluxUzXNFzqV5fkjfG7heCCuKnGvdPPxtiRroy3YnwUH5jlsVIFa0kZY6xRF83X1ZVd0REREREREREREREREREREREREREREREREREREREREREREREREREREREREXZVhdYm7tvVda2ml3xx5Rr5Ru1YKkwXcAtxjNF3LjQ9rHkHyCzZuz68yMu4JPork0fkac+JZDjJ6lW2OnfxB7X+m/gvtzP6kozuZcpYi0wHmx0JjJHoQfxWpNVshID7i/oug6GGMXcFX3ZlRkxGVjhtN7vd3JzuSn/ZzQu1e02k2CGUFj3unIGwEXiT6c1k4uzprVz/YDWdh8tv8Amo3uDmSHya/lz9Csi5lcjppkmMaf9oSQd0ZXc3NZxHkB67dfDZVVL4ywTX0COZG5rXh2jT/gXR2laV+381Ka0f8AZ+M++eQKjX5KWuYOFsTj6OH81p72F1PqPKMqVX3Lk8jgBu9xawHxJ6ABWC/EaK0PDXit125bJsjHfzTSF0Yk258Lem2/mrop+MMzBopRS8dxOSwHMqudR9mM1Gs6Y1nADx2VV5yiaNruttl6E1N2oQT4h9GFkMcY5Na1oAHwVB6rvC9kDKNup6LZCrq2xgd1adERSXPRERERERERERERERERERERERERERERERERERERERERERERERERACTsOqdVvtM4eS7YaAwncrCkxhebBY+Iws914AaTurCwWgA2D2q8+KtCBuZJXBoHzKybNmhpKBsEMMdnKEA8LubIf2vM+iimTyWQyljvr9qWw/oA48h6AdB8lW6Sy1azFaeiORozO+wVh0o9E47bi1HEHj9Sx7v3Bb77e0bfx/sNjUsezR+bkkhe1zD8eHmPQrW6b7L8ZSw0OV1tenrvsMD4qNchr2tPMF7jvsSPABfbukuzy1G6GhayFKcjZkjphI0H1aQNx8CouYXts4Cy2GS4rJHm4bADyN7+6i7Zvs/U8MYu17VeR+0divJxNPkfMH0KujTeXGRxeezs9aB1uGSCoJHsDieCLc9em5O5Xn7O4C9gcsytO9ro3+9BYjG7JAPEevp4KyuwjLXcjqKXT9h7JMbbims2I3M594xuwcHdfLktWOAtmB5WtZU4XXETcOVpab2t4rszfarPWZNA3ggJ5HgaG7/RVBq3Vk2R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" alt="IQUE Green India" style="height:48px;width:auto;object-fit:contain;display:block;"></div>
+  <ul class="nav-links">
+    <li><a href="#services">Services</a></li>
+    <li><a href="#clients">Clients</a></li>
+    <li><a href="#testimonials">Reviews</a></li>
+    <li><a href="#why">Why Us</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+  <a href="#contact" class="nav-cta">Get a Free Quote</a>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-left">
+    <div class="hero-eyebrow">Lucknow · Kanpur · Ayodhya</div>
+    <h1>Gardens that<br><em>people remember.</em></h1>
+    <p class="hero-desc">We've built gardens at Ayodhya Railway Station, HPCL forecourts, and 500+ homes across UP. Every project starts with one free site visit — no obligation.</p>
+    <div class="hero-actions">
+      <a href="#contact" class="btn-primary">Get Free Site Audit</a>
+      <a href="#services" class="btn-ghost">See our work</a>
+    </div>
+    <div class="hero-stats">
+      <div class="stat-item">
+        <div class="stat-num">500+</div>
+        <div class="stat-label">Happy Clients</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-num">7+</div>
+        <div class="stat-label">Years Active</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-num">3</div>
+        <div class="stat-label">Cities Served</div>
+      </div>
+    </div>
+  </div>
+  <div class="hero-right">
+    <div class="hero-img-grid">
+      <div class="hero-img">
+        <div class="img-placeholder">
+          <img src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=800&q=80" alt="Landscaping project" style="width:100%;height:100%;object-fit:cover" onerror="this.parentElement.innerHTML='<div class=img-placeholder>HERO PROJECT</div>'">
+        </div>
+        <div class="hero-img-badge">Ayodhya Railway Station</div>
+      </div>
+      <div class="hero-img">
+        <div class="img-placeholder">
+          <img src="https://images.unsplash.com/photo-1585320806297-9794b3e4eeae?w=400&q=80" alt="Garden" style="width:100%;height:100%;object-fit:cover" onerror="this.parentElement.innerHTML='<div class=img-placeholder>TERRACE GARDEN</div>'">
+        </div>
+        <div class="hero-img-badge">Terrace Garden</div>
+      </div>
+      <div class="hero-img">
+        <div class="img-placeholder">
+          <img src="https://images.unsplash.com/photo-1416879595882-3373a0480b5b?w=400&q=80" alt="Vertical garden" style="width:100%;height:100%;object-fit:cover" onerror="this.parentElement.innerHTML='<div class=img-placeholder>VERTICAL GARDEN</div>'">
+        </div>
+        <div class="hero-img-badge">Vertical Garden</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- MARQUEE -->
+<div class="marquee-bar">
+  <div class="marquee-track">
+    <div class="marquee-item">Landscaping Design</div>
+    <div class="marquee-item">Terrace Gardens</div>
+    <div class="marquee-item">Vertical Gardens</div>
+    <div class="marquee-item">Turf Solutions</div>
+    <div class="marquee-item">Kitchen Gardens</div>
+    <div class="marquee-item">Annual Maintenance</div>
+    <div class="marquee-item">Aquatic Ponds</div>
+    <div class="marquee-item">Sports Grounds</div>
+    <div class="marquee-item">Irrigation Systems</div>
+    <div class="marquee-item">Landscape Lighting</div>
+    <div class="marquee-item">Landscaping Design</div>
+    <div class="marquee-item">Terrace Gardens</div>
+    <div class="marquee-item">Vertical Gardens</div>
+    <div class="marquee-item">Turf Solutions</div>
+    <div class="marquee-item">Kitchen Gardens</div>
+    <div class="marquee-item">Annual Maintenance</div>
+    <div class="marquee-item">Aquatic Ponds</div>
+    <div class="marquee-item">Sports Grounds</div>
+    <div class="marquee-item">Irrigation Systems</div>
+    <div class="marquee-item">Landscape Lighting</div>
+  </div>
+</div>
+
+<!-- CLIENTS -->
+<section class="clients-section" id="clients">
+  <div class="clients-top">
+    <div class="clients-top-left">
+      <div class="section-eyebrow" style="color:var(--text-muted)">Who trusts us</div>
+      <h2 style="color:var(--text-dark)">From government<br><span style="color:var(--green-bright)">to your neighbourhood.</span></h2>
+      <p style="color:var(--text-muted);margin-top:.75rem;max-width:380px;line-height:1.75;font-size:.95rem">We've worked with PSUs, schools, hospitals, hotels, and 500+ homes. Here's a slice of who's trusted us with their green spaces.</p>
+    </div>
+    <div class="clients-stats-row">
+      <div class="cstat">
+        <div class="cstat-num">500<span>+</span></div>
+        <div class="cstat-label">Total clients</div>
+      </div>
+      <div class="cstat-divider"></div>
+      <div class="cstat">
+        <div class="cstat-num">7<span>+</span></div>
+        <div class="cstat-label">Years active</div>
+      </div>
+      <div class="cstat-divider"></div>
+      <div class="cstat">
+        <div class="cstat-num">3</div>
+        <div class="cstat-label">Cities</div>
+      </div>
+      <div class="cstat-divider"></div>
+      <div class="cstat">
+        <div class="cstat-num">12<span>+</span></div>
+        <div class="cstat-label">Services</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="clients-bento">
+
+    <div class="cbento-card cbento-hero" style="background:linear-gradient(135deg,#0a2e1a 0%,#1a5c32 100%)">
+      <div class="cbento-icon">🏛</div>
+      <div class="cbento-name">HPCL</div>
+      <div class="cbento-type">Hindustan Petroleum · PSU</div>
+      <div class="cbento-badge">Government</div>
+      <div class="cbento-img-bg" style="background-image:url('https://images.unsplash.com/photo-1485833077593-4278bba3f11f?w=400&q=60')"></div>
+    </div>
+
+    <div class="cbento-card cbento-featured" style="background:linear-gradient(135deg,#1a3a4a 0%,#0f5e6e 100%)">
+      <div class="cbento-icon">🚉</div>
+      <div class="cbento-name">Ayodhya Railway Station</div>
+      <div class="cbento-type">Indian Railways · Infrastructure</div>
+      <div class="cbento-badge">Government</div>
+    </div>
+
+    <div class="cbento-card" style="background:linear-gradient(135deg,#2d1a4a 0%,#5c3290 100%)">
+      <div class="cbento-icon">🏗</div>
+      <div class="cbento-name">Ansal Golf City</div>
+      <div class="cbento-type">Real Estate · Lucknow</div>
+      <div class="cbento-badge">Real Estate</div>
+    </div>
+
+    <div class="cbento-card" style="background:linear-gradient(135deg,#1a2e4a 0%,#1a5c7a 100%)">
+      <div class="cbento-icon">🏢</div>
+      <div class="cbento-name">HIGHNESS Infra</div>
+      <div class="cbento-type">Summit Tower · Lucknow</div>
+      <div class="cbento-badge">Corporate</div>
+    </div>
+
+    <div class="cbento-card" style="background:linear-gradient(135deg,#3a1a1a 0%,#8c3a1a 100%)">
+      <div class="cbento-icon">🏨</div>
+      <div class="cbento-name">Saubhagya UN Hotel</div>
+      <div class="cbento-type">Hospitality · Lucknow</div>
+      <div class="cbento-badge">Hotel</div>
+    </div>
+
+    <div class="cbento-card" style="background:linear-gradient(135deg,#0a2e1a 0%,#2d7a3a 100%)">
+      <div class="cbento-icon">🎓</div>
+      <div class="cbento-name">New Millennium School</div>
+      <div class="cbento-type">Education · Gomti Nagar</div>
+      <div class="cbento-badge">Education</div>
+    </div>
+
+    <div class="cbento-card" style="background:linear-gradient(135deg,#1a2a0a 0%,#4a7a1a 100%)">
+      <div class="cbento-icon">🏏</div>
+      <div class="cbento-name">Jaipuriya Cricket Academy</div>
+      <div class="cbento-type">Sports · Rajajipuram</div>
+      <div class="cbento-badge">Sports</div>
+    </div>
+
+    <div class="cbento-card" style="background:linear-gradient(135deg,#1a0a2a 0%,#4a1a6a 100%)">
+      <div class="cbento-icon">🏥</div>
+      <div class="cbento-name">Dr. Izhar Hospital</div>
+      <div class="cbento-type">Healthcare · Lucknow</div>
+      <div class="cbento-badge">Healthcare</div>
+    </div>
+
+    <div class="cbento-card cbento-wide" style="background:linear-gradient(135deg,#0a1a2e 0%,#1a3a6e 100%)">
+      <div class="cbento-icon">📋</div>
+      <div class="cbento-name">Income Tax Training Centre</div>
+      <div class="cbento-type">Government · Lucknow</div>
+      <div class="cbento-badge">Government</div>
+    </div>
+
+    <div class="cbento-card cbento-cta" style="background:var(--lime)">
+      <div style="font-family:'Cormorant Garamond',serif;font-size:1.4rem;font-weight:600;color:var(--green-dark);line-height:1.3">Your organisation<br>could be next.</div>
+      <a href="#contact" style="display:inline-block;margin-top:1rem;background:var(--green-dark);color:var(--lime);font-size:.75rem;font-weight:600;letter-spacing:.06em;text-transform:uppercase;padding:.6rem 1.2rem;border-radius:2px;text-decoration:none;">Book a free audit →</a>
+    </div>
+
+  </div>
+</section>
+
+<!-- SERVICES -->
+<section class="services-section" id="services">
+  <div class="services-header">
+    <div class="services-header-left">
+      <div class="section-eyebrow">What we do</div>
+      <h2>Every green space<br><span>we've ever touched</span></h2>
+    </div>
+    <p class="services-header-right">Six services. One team. Projects ranging from a 60 sq ft balcony in Indiranagar to the Ayodhya Railway Station grounds.</p>
+  </div>
+  <div class="services-grid-new">
+
+    <div class="svc-card" data-index="0">
+      <div class="svc-img">
+        <img src="https://images.unsplash.com/photo-1585771724684-38269d6639fd?w=600&q=80" alt="Landscaping" loading="lazy">
+        <div class="svc-overlay">
+          <span class="svc-tag-pill">Design + Execute</span>
+        </div>
+      </div>
+      <div class="svc-body">
+        <div class="svc-num">01</div>
+        <div class="svc-name">Professional Landscaping</div>
+        <div class="svc-desc">Full-scale design and execution — residential complexes, corporate campuses, government grounds. We handle everything from layout to planting.</div>
+        <a href="#contact" class="svc-cta">Get a quote →</a>
+      </div>
+    </div>
+
+    <div class="svc-card" data-index="1">
+      <div class="svc-img">
+        <img src="https://images.unsplash.com/photo-1416879595882-3373a0480b5b?w=600&q=80" alt="Vertical garden" loading="lazy">
+        <div class="svc-overlay">
+          <span class="svc-tag-pill">Urban Favourite</span>
+        </div>
+      </div>
+      <div class="svc-body">
+        <div class="svc-num">02</div>
+        <div class="svc-name">Vertical Gardens</div>
+        <div class="svc-desc">Green walls for offices, hotel lobbies, and urban apartments. Low maintenance, zero ground space. The single most-photographed addition to any space.</div>
+        <a href="#contact" class="svc-cta">Get a quote →</a>
+      </div>
+    </div>
+
+    <div class="svc-card" data-index="2">
+      <div class="svc-img">
+        <img src="https://images.unsplash.com/photo-1558618047-f4e80b8f1a53?w=600&q=80" alt="Terrace garden" loading="lazy">
+        <div class="svc-overlay">
+          <span class="svc-tag-pill">Residential</span>
+        </div>
+      </div>
+      <div class="svc-body">
+        <div class="svc-num">03</div>
+        <div class="svc-name">Terrace & Balcony Gardens</div>
+        <div class="svc-desc">Unused rooftop or balcony? We turn them into living spaces — seating zones, herb corners, seasonal flowers. Designed for Lucknow's climate.</div>
+        <a href="#contact" class="svc-cta">Get a quote →</a>
+      </div>
+    </div>
+
+    <div class="svc-card" data-index="3">
+      <div class="svc-img">
+        <img src="https://images.unsplash.com/photo-1574629810360-7efbbe195018?w=600&q=80" alt="Sports turf" loading="lazy">
+        <div class="svc-overlay">
+          <span class="svc-tag-pill">Commercial</span>
+        </div>
+      </div>
+      <div class="svc-body">
+        <div class="svc-num">04</div>
+        <div class="svc-name">Sports Turf Solutions</div>
+        <div class="svc-desc">Natural and artificial turf for cricket academies, football grounds, and institutional facilities. Jaipuriya Cricket Academy is one of ours.</div>
+        <a href="#contact" class="svc-cta">Get a quote →</a>
+      </div>
+    </div>
+
+    <div class="svc-card" data-index="4">
+      <div class="svc-img">
+        <img src="https://images.unsplash.com/photo-1530836369250-ef72a3f5cda8?w=600&q=80" alt="Kitchen garden" loading="lazy">
+        <div class="svc-overlay">
+          <span class="svc-tag-pill">Wellness</span>
+        </div>
+      </div>
+      <div class="svc-body">
+        <div class="svc-num">05</div>
+        <div class="svc-name">Kitchen Gardens</div>
+        <div class="svc-desc">Grow tomatoes, herbs, leafy greens — right at home or in your office pantry. We plant, you harvest. Popular with families and wellness-focused offices.</div>
+        <a href="#contact" class="svc-cta">Get a quote →</a>
+      </div>
+    </div>
+
+    <div class="svc-card" data-index="5">
+      <div class="svc-img">
+        <img src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=600&q=80" alt="Garden maintenance" loading="lazy">
+        <div class="svc-overlay">
+          <span class="svc-tag-pill">Recurring Care</span>
+        </div>
+      </div>
+      <div class="svc-body">
+        <div class="svc-num">06</div>
+        <div class="svc-name">Annual Maintenance (AMC)</div>
+        <div class="svc-desc">Mowing, trimming, fertilizing, irrigation, weed control — handled on a schedule. Silver ₹8K / Gold ₹15K / Platinum ₹28K per year.</div>
+        <a href="#contact" class="svc-cta">Get a quote →</a>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- WHY US -->
+<section class="why-section" id="why">
+  <div class="why-left fade-up">
+    <h2>Why clients<br><span>keep calling back</span></h2>
+    <p>Most landscaping companies disappear after the install. We don't. Half our business comes from existing clients expanding their gardens or adding annual maintenance. That says more than any brochure.</p>
+    <div class="why-points">
+      <div class="why-point">
+        <div class="why-point-icon">📐</div>
+        <div class="why-point-text">
+          <h4>Free Site Audit Before Every Project</h4>
+          <p>Our team visits your site, understands requirements, and gives you a detailed plan — before you spend a rupee.</p>
+        </div>
+      </div>
+      <div class="why-point">
+        <div class="why-point-icon">🏛</div>
+        <div class="why-point-text">
+          <h4>Government & PSU Certified</h4>
+          <p>HPCL, Ayodhya Railway Station, Income Tax Centre — we hold the trust of India's largest institutions.</p>
+        </div>
+      </div>
+      <div class="why-point">
+        <div class="why-point-icon">⚡</div>
+        <div class="why-point-text">
+          <h4>Post-Sales Service, Always</h4>
+          <p>We don't disappear after installation. Our AMC contracts ensure your green space stays perfect year-round.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="why-right fade-up">
+    <div class="metric-box">
+      <div>
+        <div class="num">7+</div>
+        <div class="label">Years of experience</div>
+      </div>
+      <div class="desc">Established Dec 2017. Still growing strong.</div>
+    </div>
+    <div class="metric-box">
+      <div>
+        <div class="num">500+</div>
+        <div class="label">Satisfied clients</div>
+      </div>
+      <div class="desc">Across Lucknow, Kanpur & Ayodhya.</div>
+    </div>
+    <div class="metric-box">
+      <div>
+        <div class="num">12+</div>
+        <div class="label">Service types</div>
+      </div>
+      <div class="desc">Hardscape to softscape to aquatic.</div>
+    </div>
+    <div class="metric-box" style="background: var(--lime)">
+      <div>
+        <div class="num" style="color: var(--green-dark)">AMC</div>
+        <div class="label" style="color: rgba(10,26,15,.6)">Annual contracts</div>
+      </div>
+      <div class="desc" style="color: rgba(10,26,15,.45)">₹8K – ₹28K / year. Hassle-free year-round maintenance.</div>
+    </div>
+  </div>
+</section>
+
+<!-- SEGMENTS -->
+<section class="segments-section">
+  <div class="segments-header">
+    <h2>Three segments<br><span>we've built for</span></h2>
+    <p>Corporate, hospitality, residential. Different needs, same standard of work.</p>
+  </div>
+  <div class="segments-grid reveal">
+    <div class="seg-card">
+      <div class="seg-card-top" data-label="Corporate">🏢</div>
+      <div class="seg-card-body">
+        <div class="seg-card-title">Corporate Offices & IT Parks</div>
+        <div class="seg-card-desc">Lobby gardens, terrace spaces, and outdoor seating landscapes. AMC available for hassle-free year-round maintenance.</div>
+        <div class="seg-card-price">₹2L – ₹5L per contract</div>
+      </div>
+    </div>
+    <div class="seg-card">
+      <div class="seg-card-top" data-label="Hospitality">🏨</div>
+      <div class="seg-card-body">
+        <div class="seg-card-title">Hotels & Resorts</div>
+        <div class="seg-card-desc">Premium landscape design for hotels across Lucknow and Ayodhya. Lobby gardens, poolscapes, and terrace retreats.</div>
+        <div class="seg-card-price">₹3L – ₹8L per project</div>
+      </div>
+    </div>
+    <div class="seg-card">
+      <div class="seg-card-top" data-label="Residential">🏘</div>
+      <div class="seg-card-body">
+        <div class="seg-card-title">Housing Societies & RWAs</div>
+        <div class="seg-card-desc">Common area maintenance, entrance landscaping, and garden upkeep for large residential communities.</div>
+        <div class="seg-card-price">₹10K – ₹25K / month</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section class="contact-section" id="contact">
+  <div class="contact-left">
+    <h2>Tell us what<br><span>you're thinking.</span></h2>
+    <p>We visit your site, understand what you actually want, and give you a plan that fits your budget. No hard sell. If it's not right for you, we'll tell you.</p>
+    <div class="contact-info">
+      <div class="contact-row">
+        <div class="contact-icon">📍</div>
+        <div class="contact-detail">
+          <h4>Office</h4>
+          <p>B-1227, Indira Nagar, Lucknow – 226016</p>
+        </div>
+      </div>
+      <div class="contact-row">
+        <div class="contact-icon">📞</div>
+        <div class="contact-detail">
+          <h4>Call / WhatsApp</h4>
+          <p>+91 7571081703 · 0522-4237416</p>
+        </div>
+      </div>
+      <div class="contact-row">
+        <div class="contact-icon">✉️</div>
+        <div class="contact-detail">
+          <h4>Email</h4>
+          <p>iquegreenindia@gmail.com</p>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div>
+    <form class="contact-form" onsubmit="handleSubmit(event)">
+      <div class="form-row">
+        <input type="text" placeholder="Your name" required>
+        <input type="tel" placeholder="Phone number" required>
+      </div>
+      <input type="email" placeholder="Email address">
+      <select>
+        <option value="" disabled selected>Type of service needed</option>
+        <option>Landscaping Design</option>
+        <option>Terrace / Balcony Garden</option>
+        <option>Vertical Garden</option>
+        <option>Annual Maintenance (AMC)</option>
+        <option>Corporate / Office Garden</option>
+        <option>Sports Turf</option>
+        <option>Kitchen Garden</option>
+        <option>Hotel / Resort Landscaping</option>
+        <option>Other</option>
+      </select>
+      <input type="text" placeholder="Your location / area in Lucknow">
+      <textarea placeholder="Tell us briefly about your project..."></textarea>
+      <button type="submit" class="submit-btn">Book Free Site Audit →</button>
+    </form>
+  </div>
+</section>
+
+
+<!-- TESTIMONIALS -->
+<section class="testimonials-section" id="testimonials">
+  <div class="section-label" style="color:rgba(181,229,80,.6)">What our clients say</div>
+  <div class="testimonials-header">
+    <h2>What clients<br><span>told us after.</span></h2>
+  </div>
+  <div class="testimonials-grid">
+
+    <div class="testi-card">
+      <div class="testi-stars">★★★★★</div>
+      <p class="testi-quote">"IQUE Green India transformed our school grounds completely. The kids love the new garden spaces and the maintenance team is always on time. Highly recommended for institutional projects."</p>
+      <div class="testi-author">
+        <div class="testi-photo">
+          <!-- Replace src below with actual client photo URL or base64 -->
+          <div class="testi-initials">RS</div>
+        </div>
+        <div>
+          <div class="testi-name">Rajesh Sharma</div>
+          <div class="testi-role">Principal, New Millennium Public School, Lucknow</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="testi-card">
+      <div class="testi-stars">★★★★★</div>
+      <p class="testi-quote">"Our hotel's entrance and terrace gardens have received consistent compliments from guests. IQUE Green India delivered beyond our expectations — on time and within budget."</p>
+      <div class="testi-author">
+        <div class="testi-photo">
+          <div class="testi-initials">AV</div>
+        </div>
+        <div>
+          <div class="testi-name">Anil Verma</div>
+          <div class="testi-role">Manager, Saubhagya UN Hotel, Lucknow</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="testi-card">
+      <div class="testi-stars">★★★★★</div>
+      <p class="testi-quote">"We've been using their AMC service for 2 years. Our office campus looks pristine year-round. The team is professional, responsive, and genuinely passionate about their work."</p>
+      <div class="testi-author">
+        <div class="testi-photo">
+          <div class="testi-initials">PK</div>
+        </div>
+        <div>
+          <div class="testi-name">Priya Khanna</div>
+          <div class="testi-role">Facilities Head, Corporate Office, Gomti Nagar</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="testi-card">
+      <div class="testi-stars">★★★★★</div>
+      <p class="testi-quote">"The vertical garden they installed in our lobby has become a conversation starter. Every visitor asks about it. IQUE's team was professional from design to delivery."</p>
+      <div class="testi-author">
+        <div class="testi-photo">
+          <div class="testi-initials">SM</div>
+        </div>
+        <div>
+          <div class="testi-name">Suresh Mishra</div>
+          <div class="testi-role">Director, HIGHNESS Infra Pvt. Ltd., Lucknow</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="testi-card">
+      <div class="testi-stars">★★★★★</div>
+      <p class="testi-quote">"Ambrish ji and his team are extremely dedicated. They designed our terrace garden keeping our lifestyle in mind — we grow our own vegetables now. Worth every rupee."</p>
+      <div class="testi-author">
+        <div class="testi-photo">
+          <div class="testi-initials">NK</div>
+        </div>
+        <div>
+          <div class="testi-name">Neha Kapoor</div>
+          <div class="testi-role">Homeowner, Indiranagar, Lucknow</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="testi-card">
+      <div class="testi-stars">★★★★★</div>
+      <p class="testi-quote">"IQUE handled our cricket academy turf from start to finish. The quality is outstanding and they gave us a detailed maintenance plan. We now use them for all our green space needs."</p>
+      <div class="testi-author">
+        <div class="testi-photo">
+          <div class="testi-initials">RG</div>
+        </div>
+        <div>
+          <div class="testi-name">Rahul Gupta</div>
+          <div class="testi-role">Director, Jaipuriya Cricket Academy, Lucknow</div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+
+<!-- SOCIAL BAR -->
+<div class="social-bar">
+  <div class="social-bar-label">Follow our work on social media</div>
+  <div class="social-links">
+    <a href="https://instagram.com/iquegreenindia" target="_blank" class="social-link">
+      <svg viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+      Instagram
+    </a>
+    <a href="https://facebook.com/iquegreenindia" target="_blank" class="social-link">
+      <svg viewBox="0 0 24 24"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
+      Facebook
+    </a>
+    <a href="https://wa.me/917571081703" target="_blank" class="social-link" style="background:#25D366">
+      <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg>
+      WhatsApp
+    </a>
+    <a href="https://youtube.com/@iquegreenindia" target="_blank" class="social-link" style="background:#FF0000">
+      <svg viewBox="0 0 24 24"><path d="M23.495 6.205a3.007 3.007 0 0 0-2.088-2.088c-1.87-.501-9.396-.501-9.396-.501s-7.507-.01-9.396.501A3.007 3.007 0 0 0 .527 6.205a31.247 31.247 0 0 0-.522 5.805 31.247 31.247 0 0 0 .522 5.783 3.007 3.007 0 0 0 2.088 2.088c1.868.502 9.396.502 9.396.502s7.506 0 9.396-.502a3.007 3.007 0 0 0 2.088-2.088 31.247 31.247 0 0 0 .5-5.783 31.247 31.247 0 0 0-.5-5.805zM9.609 15.601V8.408l6.264 3.602z"/></svg>
+      YouTube
+    </a>
+  </div>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-logo"><img src="data:image/png;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/4gHYSUNDX1BST0ZJTEUAAQEAAAHIAAAAAAQwAABtbnRyUkdCIFhZWiAH4AABAAEAAAAAAABhY3NwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQAA9tYAAQAAAADTLQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAlkZXNjAAAA8AAAACRyWFlaAAABFAAAABRnWFlaAAABKAAAABRiWFlaAAABPAAAABR3dHB0AAABUAAAABRyVFJDAAABZAAAAChnVFJDAAABZAAAAChiVFJDAAABZAAAAChjcHJ0AAABjAAAADxtbHVjAAAAAAAAAAEAAAAMZW5VUwAAAAgAAAAcAHMAUgBHAEJYWVogAAAAAAAAb6IAADj1AAADkFhZWiAAAAAAAABimQAAt4UAABjaWFlaIAAAAAAAACSgAAAPhAAAts9YWVogAAAAAAAA9tYAAQAAAADTLXBhcmEAAAAAAAQAAAACZmYAAPKnAAANWQAAE9AAAApbAAAAAAAAAABtbHVjAAAAAAAAAAEAAAAMZW5VUwAAACAAAAAcAEcAbwBvAGcAbABlACAASQBuAGMALgAgADIAMAAxADb/2wBDAAUDBAQEAwUEBAQFBQUGBwwIBwcHBw8LCwkMEQ8SEhEPERETFhwXExQaFRERGCEYGh0dHx8fExciJCIeJBweHx7/2wBDAQUFBQcGBw4ICA4eFBEUHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh7/wAARCAB+ASQDASIAAhEBAxEB/8QAHAABAAICAwEAAAAAAAAAAAAAAAYHBAUCAwgB/8QARhAAAQQBAgMFBQMIBwcFAAAAAQACAwQFBhESITEHE0FRYRQicYGRFTKhFyNCU3KxwdEIFiQzUoKyJTQ2YnOS0kNUlMLw/8QAGwEBAAIDAQEAAAAAAAAAAAAAAAIDAQQFBgf/xAA2EQABAwIEAwYFAwMFAAAAAAABAAIDBBEFEiExE0FRFCJhcZGxBjKBocFy0eFSYvAVIzNC8f/aAAwDAQACEQMRAD8ApxERQXlUREREREREREREREREREPREXfWqT2TtE3dZc+DvwsDnxnYjdTHsoxte/ajbN4u8lb+PwmndW4mxDiw6LIVGnva0oHEQOXE0jqFAuANluxUzXNFzqV5fkjfG7heCCuKnGvdPPxtiRroy3YnwUH5jlsVIFa0kZY6xRF83X1ZVd0REREREREREREREREREREREREREREREREREREREREREREREREREREREREXZVhdYm7tvVda2ml3xx5Rr5Ru1YKkwXcAtxjNF3LjQ9rHkHyCzZuz68yMu4JPork0fkac+JZDjJ6lW2OnfxB7X+m/gvtzP6kozuZcpYi0wHmx0JjJHoQfxWpNVshID7i/oug6GGMXcFX3ZlRkxGVjhtN7vd3JzuSn/ZzQu1e02k2CGUFj3unIGwEXiT6c1k4uzprVz/YDWdh8tv8Amo3uDmSHya/lz9Csi5lcjppkmMaf9oSQd0ZXc3NZxHkB67dfDZVVL4ywTX0COZG5rXh2jT/gXR2laV+381Ka0f8AZ+M++eQKjX5KWuYOFsTj6OH81p72F1PqPKMqVX3Lk8jgBu9xawHxJ6ABWC/EaK0PDXit125bJsjHfzTSF0Yk258Lem2/mrop+MMzBopRS8dxOSwHMqudR9mM1Gs6Y1nADx2VV5yiaNruttl6E1N2oQT4h9GFkMcY5Na1oAHwVB6rvC9kDKNup6LZCrq2xgd1adERSXPRERERERERERERERERERERERERERERERERERERERERERERERERACTsOqdVvtM4eS7YaAwncrCkxhebBY+Iws914AaTurCwWgA2D2q8+KtCBuZJXBoHzKybNmhpKBsEMMdnKEA8LubIf2vM+iimTyWQyljvr9qWw/oA48h6AdB8lW6Sy1azFaeiORozO+wVh0o9E47bi1HEHj9Sx7v3Bb77e0bfx/sNjUsezR+bkkhe1zD8eHmPQrW6b7L8ZSw0OV1tenrvsMD4qNchr2tPMF7jvsSPABfbukuzy1G6GhayFKcjZkjphI0H1aQNx8CouYXts4Cy2GS4rJHm4bADyN7+6i7Zvs/U8MYu17VeR+0divJxNPkfMH0KujTeXGRxeezs9aB1uGSCoJHsDieCLc9em5O5Xn7O4C9gcsytO9ro3+9BYjG7JAPEevp4KyuwjLXcjqKXT9h7JMbbims2I3M594xuwcHdfLktWOAtmB5WtZU4XXETcOVpab2t4rszfarPWZNA3ggJ5HgaG7/RVBq3Vk2R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" alt="IQUE Green India" style="height:40px;width:auto;object-fit:contain;filter:brightness(0) invert(1);opacity:.8;"></div>
+  <div class="footer-copy">© 2025 IQUE Green India. Devoted for Human Health & Environments.</div>
+  <div class="footer-links">
+    <a href="#services">Services</a>
+    <a href="#clients">Clients</a>
+    <a href="#contact">Contact</a>
+  </div>
+  <div class="footer-social">
+    <a href="https://instagram.com/iquegreenindia" target="_blank" title="Instagram">
+      <svg viewBox="0 0 24 24" width="15" height="15" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+    </a>
+    <a href="https://facebook.com/iquegreenindia" target="_blank" title="Facebook">
+      <svg viewBox="0 0 24 24" width="15" height="15" fill="currentColor"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
+    </a>
+    <a href="https://wa.me/917571081703" target="_blank" title="WhatsApp">
+      <svg viewBox="0 0 24 24" width="15" height="15" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg>
+    </a>
+    <a href="https://youtube.com/@iquegreenindia" target="_blank" title="YouTube">
+      <svg viewBox="0 0 24 24" width="15" height="15" fill="currentColor"><path d="M23.495 6.205a3.007 3.007 0 0 0-2.088-2.088c-1.87-.501-9.396-.501-9.396-.501s-7.507-.01-9.396.501A3.007 3.007 0 0 0 .527 6.205a31.247 31.247 0 0 0-.522 5.805 31.247 31.247 0 0 0 .522 5.783 3.007 3.007 0 0 0 2.088 2.088c1.868.502 9.396.502 9.396.502s7.506 0 9.396-.502a3.007 3.007 0 0 0 2.088-2.088 31.247 31.247 0 0 0 .5-5.783 31.247 31.247 0 0 0-.5-5.805zM9.609 15.601V8.408l6.264 3.602z"/></svg>
+    </a>
+  </div>
+</footer>
+
+<script>
+function handleSubmit(e) {
+  e.preventDefault();
+  const btn = e.target.querySelector('.submit-btn');
+  btn.textContent = '✓ Request Sent! We will call you within 24 hours.';
+  btn.style.background = '#4eca84';
+  btn.disabled = true;
+}
+
+// Scroll reveal
+const revealObserver = new IntersectionObserver((entries) => {
+  entries.forEach(el => {
+    if (el.isIntersecting) {
+      el.target.classList.add('visible');
+      revealObserver.unobserve(el.target);
+    }
+  });
+}, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
+
+document.querySelectorAll('.fade-up, .reveal').forEach(el => revealObserver.observe(el));
+
+// Stagger children of service grid, clients grid, testimonials
+document.querySelectorAll('.services-grid .service-card, .clients-grid .client-item, .testimonials-grid .testi-card').forEach((el, i) => {
+  el.style.opacity = '0';
+  el.style.transform = 'translateY(24px)';
+  el.style.transition = `opacity .6s ease ${i * 0.07}s, transform .6s cubic-bezier(.22,1,.36,1) ${i * 0.07}s`;
+});
+
+const staggerObserver = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      const parent = entry.target;
+      parent.querySelectorAll('.service-card, .client-item, .testi-card').forEach(child => {
+        child.style.opacity = '1';
+        child.style.transform = 'translateY(0)';
+      });
+      staggerObserver.unobserve(parent);
+    }
+  });
+}, { threshold: 0.1 });
+
+document.querySelectorAll('.services-grid, .clients-grid, .testimonials-grid').forEach(el => staggerObserver.observe(el));
+
+// Subtle parallax on hero
+window.addEventListener('scroll', () => {
+  const scrolled = window.scrollY;
+  const hero = document.querySelector('.hero');
+  if (hero && scrolled < window.innerHeight) {
+    hero.style.backgroundPositionY = scrolled * 0.3 + 'px';
+  }
+}, { passive: true });
+
+// Nav shrink on scroll
+const nav = document.querySelector('nav');
+window.addEventListener('scroll', () => {
+  if (window.scrollY > 60) {
+    nav.style.padding = '.75rem 4rem';
+  } else {
+    nav.style.padding = '1.25rem 4rem';
+  }
+  nav.style.transition = 'padding .3s ease';
+}, { passive: true });
+</script>
+</body>
+</html>
