@@ -1,0 +1,70 @@
+---
+import { buildPlan } from '../lib/plan';
+
+interface Props { id: string; class?: string; seed?: number; notes?: boolean }
+const { id, class: className = '', seed = 2017, notes = true } = Astro.props;
+const plan = buildPlan(seed);
+const cols = Array.from({ length: 16 }, (_, i) => i);
+const rows = Array.from({ length: 10 }, (_, i) => i);
+---
+<svg id={id} class:list={['plan', className]} viewBox={`0 0 ${plan.W} ${plan.H}`} preserveAspectRatio="xMidYMid slice" role="img" aria-label="Drawn landscape site plan with lawns, a stone court, an avenue, a pond and trees">
+  <g class="pl-fill pl-fill-lawn">
+    {plan.lawn.map((d) => <path d={d} />)}
+  </g>
+  <g class="pl-fill pl-fill-hard">
+    {plan.hard.map((d) => <path d={d} />)}
+    <circle cx={plan.court.x} cy={plan.court.y} r={plan.court.r} />
+  </g>
+  <g class="pl-fill pl-fill-water"><path d={plan.water} /></g>
+  <g class="pl-fill pl-fill-bed">
+    {plan.beds.map((d) => <path d={d} />)}
+  </g>
+
+  <g class="pl-grid">
+    {cols.map((i) => <path pathLength="1" d={`M${i * 100 + 100} 0V${plan.H}`} />)}
+    {rows.map((i) => <path pathLength="1" d={`M0 ${i * 100 + 100}H${plan.W}`} />)}
+  </g>
+  <g class="pl-contour">
+    {plan.contours.map((d) => <path pathLength="1" d={d} />)}
+  </g>
+  <path class="pl-boundary" pathLength="1" d={plan.boundary} />
+
+  <g class="pl-line pl-line-hard">
+    {plan.hard.map((d) => <path pathLength="1" d={d} />)}
+    {plan.courtRings.map((rad) => <circle pathLength="1" cx={plan.court.x} cy={plan.court.y} r={rad} />)}
+  </g>
+  <g class="pl-detail">
+    {plan.joints.map((d) => <path d={d} />)}
+    {plan.courtSpokes.map((d) => <path d={d} />)}
+  </g>
+  <g class="pl-line pl-line-soft">
+    {plan.lawn.map((d) => <path pathLength="1" d={d} />)}
+    {plan.beds.map((d) => <path pathLength="1" d={d} />)}
+  </g>
+  <g class="pl-line pl-line-water">
+    <path pathLength="1" d={plan.water} />
+    {plan.ripples.map((d) => <path pathLength="1" d={d} />)}
+  </g>
+  <g class="pl-hedge">
+    {plan.hedge.map((d) => <path d={d} />)}
+  </g>
+  <g class="pl-trees">
+    {plan.trees.map((t) => (
+      <g class="pl-tree" style={`transform-origin:${t.x.toFixed(0)}px ${t.y.toFixed(0)}px`}>
+        <path d={t.d} />
+        <circle cx={t.x} cy={t.y} r="1.6" />
+      </g>
+    ))}
+  </g>
+  {notes && (
+    <g class="pl-notes">
+      {plan.notes.map((n) => (
+        <g>
+          <path d={`M${n.x} ${n.y}L${n.tx} ${n.ty}H${n.tx + (n.tx > n.x ? 120 : -120)}`} />
+          <circle cx={n.x} cy={n.y} r="4" />
+          <text x={n.tx + (n.tx > n.x ? 4 : -116)} y={n.ty - 9}>{n.label}</text>
+        </g>
+      ))}
+    </g>
+  )}
+</svg>

@@ -1,0 +1,16 @@
+---
+interface Props { class?: string; descriptor?: boolean }
+const { class: className = '', descriptor = true } = Astro.props;
+---
+<span class:list={['logo', className]}>
+  <svg class="logo-mark" viewBox="0 0 80 100" aria-hidden="true">
+    <path class="logo-g" d="M52.8 53.1L52.8 78.3Q50.3 81.9 46 84.2Q41.7 86.4 36.7 86.4Q26.2 86.4 20.5 77.3Q14.8 68.2 14.8 51.5Q14.8 34.8 20.5 25.7Q26.2 16.6 36.8 16.6Q42.5 16.6 47.2 19.3Q51.8 21.9 54.8 26.8Q57.8 31.8 59.2 39.5L60.6 39.1L59.6 16.6L58.3 16.6L55.9 21.4Q50.2 18.3 45.6 16.8Q40.9 15.4 36.5 15.4Q27.9 15.4 20.7 20.2Q13.5 25 9.3 33.3Q5.2 41.6 5.2 51.5Q5.2 61.5 9.3 69.8Q13.5 78 20.8 82.8Q28 87.6 36.7 87.6Q41.9 87.6 48.8 85.6Q55.7 83.6 60.5 79.2L60.5 53.1L68.7 52.3L68.7 51.5L45.6 51.5L45.6 52.3Z" />
+    <path class="logo-leaf" d="M40 14.5C40 6 46.5 1 56 0C56 8.8 49.5 14.5 40 14.5Z" />
+    <path class="logo-leaf" d="M39 15C36 9.5 31 7.5 25 8C27.5 13.2 32.5 15.6 39 15Z" />
+    <path class="logo-swoosh" d="M4 94C30 100 60 92 76 68C66 96 32 107 4 94Z" />
+  </svg>
+  <span class="logo-word">
+    <span class="logo-name">IQUE Green India</span>
+    {descriptor && <span class="logo-desc">Landscape · Est. 2017</span>}
+  </span>
+</span>

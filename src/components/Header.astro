@@ -1,0 +1,30 @@
+---
+import Logo from './Logo.astro';
+import { nav, site, whatsappLink } from '../lib/site';
+
+const path = Astro.url.pathname;
+const message = 'Hello IQUE Green India, I would like to know more about your landscaping services.';
+---
+<header class="hdr" data-hdr>
+  <a class="hdr-logo" href="/" aria-label="IQUE Green India home"><Logo /></a>
+  <nav class="hdr-nav" aria-label="Main">
+    {nav.map((n) => <a href={n.href} aria-current={path.startsWith(n.href) ? 'page' : undefined}>{n.label}</a>)}
+  </nav>
+  <div class="hdr-actions">
+    <a class="hdr-wa" href={whatsappLink(message)} target="_blank" rel="noopener">WhatsApp</a>
+    <a class="btn btn-sm" href="/book/">Book a site visit</a>
+    <button class="hdr-toggle" type="button" aria-expanded="false" aria-controls="menu" aria-label="Open menu" data-menu-toggle><span></span><span></span></button>
+  </div>
+</header>
+
+<div class="menu" id="menu" data-menu hidden>
+  <nav aria-label="Mobile">
+    <a href="/">Home</a>
+    {nav.map((n) => <a href={n.href}>{n.label}</a>)}
+    <a href="/book/">Book a site visit</a>
+  </nav>
+  <div class="menu-foot mono">
+    <a href={`tel:${site.phone}`}>{site.phoneDisplay}</a>
+    <span>{site.corporateOffice}</span>
+  </div>
+</div>

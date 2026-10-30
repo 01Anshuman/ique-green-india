@@ -1,0 +1,23 @@
+---
+import type { Client } from '../lib/site';
+
+interface Props { rows: Client[]; filter?: boolean; sectors?: string[] }
+const { rows, filter = false, sectors = [] } = Astro.props;
+---
+{filter && (
+  <div class="reg-filter" role="group" aria-label="Filter clients by sector" data-reg-filter>
+    <button type="button" aria-pressed="true" data-sector="all">All sectors</button>
+    {sectors.map((s) => <button type="button" aria-pressed="false" data-sector={s}>{s}</button>)}
+  </div>
+)}
+<ol class="reg" data-reg>
+  {rows.map((c, i) => (
+    <li class="reg-row" data-rise data-sector={c.sector}>
+      <span class="reg-no mono">{String(i + 1).padStart(2, '0')}</span>
+      <span class="reg-name">{c.name}</span>
+      <span class="reg-detail">{c.detail}</span>
+      <span class="reg-sector mono">{c.sector}</span>
+      <span class="reg-loc mono">{c.location}</span>
+    </li>
+  ))}
+</ol>

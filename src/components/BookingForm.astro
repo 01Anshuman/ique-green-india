@@ -1,0 +1,35 @@
+---
+import { services } from '../lib/services';
+import { site } from '../lib/site';
+
+interface Props { preset?: string }
+const { preset } = Astro.props;
+---
+<form class="book" name="booking" method="POST" data-netlify="true" netlify-honeypot="company" data-booking data-whatsapp={site.whatsapp}>
+  <input type="hidden" name="form-name" value="booking" />
+  <p class="book-trap" aria-hidden="true"><label>Company <input name="company" tabindex="-1" autocomplete="off" /></label></p>
+
+  <label class="field">
+    <span class="mono">Your name</span>
+    <input name="name" type="text" autocomplete="name" required />
+  </label>
+  <label class="field">
+    <span class="mono">Phone</span>
+    <input name="phone" type="tel" autocomplete="tel" inputmode="tel" pattern="[0-9+ \-]{10,16}" title="Enter a 10-digit phone number" required />
+  </label>
+  <label class="field">
+    <span class="mono">Service</span>
+    <select name="service" required>
+      <option value="" disabled selected={!preset}>Choose a service</option>
+      {services.map((s) => <option selected={preset === s.name}>{s.name}</option>)}
+      <option>Not sure yet</option>
+    </select>
+  </label>
+  <label class="field">
+    <span class="mono">Preferred visit day</span>
+    <input name="visit-day" type="date" required data-min-today />
+  </label>
+
+  <button class="btn btn-lg book-go" type="submit">Confirm on WhatsApp</button>
+  <p class="book-note" data-booking-note role="status">We open WhatsApp with your details filled in. Press send and your visit request reaches us.</p>
+</form>

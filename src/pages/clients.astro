@@ -1,0 +1,32 @@
+---
+import Base from '../layouts/Base.astro';
+import SitePlan from '../components/SitePlan.astro';
+import ClientRegister from '../components/ClientRegister.astro';
+import { clients, gallery, photos, sectors } from '../lib/site';
+---
+<Base title="Clients & Work" description="The IQUE Green India client register: HPCL, Ayodhya Railway Station, Green Corridor Link Road and institutions across Lucknow, Ayodhya and Banda." waMessage="Hello IQUE Green India, I saw your client list and would like to discuss a project.">
+  <section class="page-hero">
+    <SitePlan id="cl-plan" seed={2021} notes={false} />
+    <p class="eyebrow mono"><span>Clients &amp; work</span><span>{clients.length} on the register</span></p>
+    <h1 class="display">Trusted with <em>public</em> ground.</h1>
+    <p class="lede">Government bodies, developers, schools, hospitals and hotels that have put their green spaces in our care.</p>
+  </section>
+
+  <section class="light section wrap">
+    <ClientRegister rows={clients} filter sectors={sectors} />
+    <p style="margin-top:1.5rem">And many more customers across Uttar Pradesh.</p>
+  </section>
+
+  <section class="dark section wrap">
+    <p class="eyebrow mono"><span>In the field</span><span>Landscape types</span></p>
+    <h2 class="h2" style="margin-bottom:clamp(2rem,5vw,4rem)">The range of the <em>work.</em></h2>
+    <div class="field-grid">
+      {gallery.map((key, i) => (
+        <figure class="shot">
+          <div class="shot-img" data-clip><img src={photos[key].src} width={photos[key].width} height={photos[key].height} alt={photos[key].alt} loading="lazy" decoding="async" /></div>
+          <figcaption class="mono"><span>{String(i + 1).padStart(2, '0')}</span><span>{photos[key].caption}</span></figcaption>
+        </figure>
+      ))}
+    </div>
+  </section>
+</Base>

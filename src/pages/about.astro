@@ -1,0 +1,73 @@
+---
+import Base from '../layouts/Base.astro';
+import SitePlan from '../components/SitePlan.astro';
+import { photos, site, team } from '../lib/site';
+
+const facts = [
+  ['Legal name', site.legalName],
+  ['Status', 'Private limited company'],
+  ['CIN', site.cin],
+  ['Incorporated', site.incorporated],
+  ['Chief Functionary', site.chief],
+  ['Corporate office', site.corporateOffice],
+  ['Registered office', site.registeredOffice],
+  ['Contact', `${site.phoneDisplay} · ${site.landlineDisplay}`],
+  ['Email', site.email],
+];
+---
+<Base title="About" description="IQUE Green India Pvt. Ltd. is a Lucknow landscape company incorporated in 2017, with landscape design engineers, project managers, supervisors and skilled workers." waMessage="Hello IQUE Green India, I would like to know more about your company.">
+  <section class="page-hero">
+    <SitePlan id="ab-plan" seed={2023} notes={false} />
+    <p class="eyebrow mono"><span>About</span><span>Est. {site.founded}, Lucknow</span></p>
+    <h1 class="display">Devoted to human health <em>and environments.</em></h1>
+  </section>
+
+  <section class="light section wrap">
+    <div class="ab-grid">
+      <div class="ab-text">
+        <h2 class="h2" style="margin-bottom:1rem">World-class gardens, with absolute quality of service.</h2>
+        <p>That is the commitment IQUE Green India has held since it was incorporated in Lucknow in December 2017. We built our reputation on strict attention to detail, and on customised work drawn for each client.</p>
+        <p>Years of experience have shaped us in landscaping, vertical gardens, township gardens, sports grounds and turf solutions. We have the team and the finest equipment to complete large-scale and small-scale projects alike.</p>
+        <p>Our approach has one rule: the landscape plan comes first. Our experienced team draws the plan before anything is implemented, which saves our clients' time and settles the design on paper.</p>
+      </div>
+      <figure class="shot" style="margin:0">
+        <div class="shot-img" data-clip style="aspect-ratio:4/5;width:100%"><img src={photos.waterfall.src} alt={photos.waterfall.alt} loading="lazy" decoding="async" /></div>
+        <figcaption class="mono" style="color:inherit;opacity:.75">{photos.waterfall.caption}</figcaption>
+      </figure>
+    </div>
+  </section>
+
+  <section class="pine section wrap">
+    <p class="eyebrow mono"><span>Direction</span></p>
+    <div class="pair" style="margin-top:0">
+      <div data-rise>
+        <h2 class="mono">Vision</h2>
+        <p>To grow and expand our services throughout India.</p>
+      </div>
+      <div data-rise>
+        <h2 class="mono">Mission</h2>
+        <p>High-quality services at affordable prices that improve and protect our clients' property values.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="light section wrap">
+    <p class="eyebrow mono"><span>The team</span></p>
+    <h2 class="h2" style="max-width:13em;margin-bottom:clamp(2rem,4vw,3.5rem)">Well-trained, and on site <em>every day.</em></h2>
+    <ul class="people">
+      {team.map((t) => <li data-rise><b>{t.title}</b>{t.body}</li>)}
+    </ul>
+  </section>
+
+  <section class="light wrap" style="padding-bottom:var(--section)">
+    <div class="ab-grid">
+      <div>
+        <p class="eyebrow mono"><span>Company record</span></p>
+        <h2 class="h2">On the record.</h2>
+      </div>
+      <dl class="facts" style="margin:0">
+        {facts.map(([k, v]) => <div><dt>{k}</dt><dd>{v}</dd></div>)}
+      </dl>
+    </div>
+  </section>
+</Base>

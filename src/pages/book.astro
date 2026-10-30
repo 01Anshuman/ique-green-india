@@ -1,0 +1,26 @@
+---
+import Base from '../layouts/Base.astro';
+import BookingForm from '../components/BookingForm.astro';
+import { site, whatsappLink } from '../lib/site';
+---
+<Base title="Book a Site Visit" description="Book a site visit with IQUE Green India in four fields, or message us directly on WhatsApp. Lucknow, Ayodhya and across Uttar Pradesh.">
+  <section class="bp bk-page dark">
+    <div>
+      <p class="eyebrow mono"><span>Book a site visit</span></p>
+      <h1 class="display" style="font-size:clamp(2.9rem,7vw,7rem)">Show us the <em>ground.</em></h1>
+      <p class="lede" style="margin-top:1.25rem">Four details and you are done. Our team walks the site with you and tells you what it needs.</p>
+      <div class="bp-side">
+        <div>
+          <h2 class="mono">Prefer to talk</h2>
+          <a class="link" href={whatsappLink('Hello IQUE Green India, I would like to discuss a landscape project.')} target="_blank" rel="noopener">Message on WhatsApp</a>
+          &nbsp;&nbsp;<a class="link" href={`tel:${site.phone}`}>{site.phoneDisplay}</a>
+        </div>
+        <div>
+          <h2 class="mono">Office</h2>
+          <address>{site.corporateOffice}</address>
+        </div>
+      </div>
+    </div>
+    <BookingForm />
+  </section>
+</Base>

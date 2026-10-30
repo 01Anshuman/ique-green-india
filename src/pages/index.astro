@@ -1,0 +1,180 @@
+---
+import Base from '../layouts/Base.astro';
+import SitePlan from '../components/SitePlan.astro';
+import ClientRegister from '../components/ClientRegister.astro';
+import BookingForm from '../components/BookingForm.astro';
+import { clients, gallery, photos, principles, process, site, whatsappLink } from '../lib/site';
+import { groups, services } from '../lib/services';
+
+const headline = clients.filter((c) => ['Hindustan Petroleum (HPCL)', 'Ayodhya Railway Station', 'Green Corridor Link Road', 'Income Tax Training Centre', 'Aditya Constructions Pvt. Ltd.', 'New Millennium Public School', 'Saubhagya UN Hotel'].includes(c.name));
+const discPhotos = [...new Set(services.flatMap((s) => s.photo ?? []))];
+const shape = ['tall', 'wide', 'small', 'wide', 'small', 'wide', 'small', 'tall', 'wide', 'small'];
+---
+<Base
+  home
+  title="IQUE Green India | Landscape Design, Build and Maintenance, Lucknow"
+  description="IQUE Green India designs, builds and maintains landscapes for government, PSU, education, healthcare and real estate clients across Uttar Pradesh. Book a site visit."
+>
+  <section class="hero" data-hero>
+    <SitePlan id="hero-plan" class="hero-plan" />
+    <div class="cross" data-cross aria-hidden="true"><i class="cross-x"></i><i class="cross-y"></i><b class="mono"></b></div>
+    <div class="hero-body">
+      <h1 class="display hero-title">
+        <span class="hero-line"><span>Landscape</span></span>
+        <span class="hero-line"><span>as <em>infrastructure.</em></span></span>
+      </h1>
+      <div class="hero-foot">
+        <div>
+          <p class="lede hero-fade">We design, build and maintain the green ground of railways, petroleum forecourts, campuses, hospitals and townships across Uttar Pradesh.</p>
+          <div class="hero-actions hero-fade">
+            <a class="btn" href="/book/">Book a site visit</a>
+            <a class="btn btn-line" href={whatsappLink('Hello IQUE Green India, I would like to discuss a landscape project.')} target="_blank" rel="noopener">Talk on WhatsApp</a>
+          </div>
+        </div>
+        <div class="hero-meta mono hero-fade">
+          <span>Est. {site.founded}</span>
+          <span>Lucknow, Uttar Pradesh</span>
+          <span>26.8467°N 80.9462°E</span>
+        </div>
+      </div>
+    </div>
+    <div class="hero-strip mono hero-fade" aria-hidden="true">
+      <span>Drawing No. 001</span>
+      <span>Site plan</span>
+      <span>Scale as drawn</span>
+      <span>{site.tagline}</span>
+    </div>
+  </section>
+
+  <section class="dark section wrap">
+    <p class="eyebrow mono"><span>01</span><span>Position</span></p>
+    <p class="statement-text" data-words>A garden is planted. Ground is delivered. We draw it before we dig it, build it with our own trained team, and stay with it long after the handover.</p>
+    <div class="stats">
+      <div class="stat"><b data-count={site.yearsLabel.replace('+', '')} data-suffix="+">{site.yearsLabel}</b><span class="mono">Years in the ground</span></div>
+      <div class="stat"><b data-count={clients.length}>{clients.length}</b><span class="mono">Named institutions and developers</span></div>
+      <div class="stat"><b data-count={services.length}>{services.length}</b><span class="mono">Landscape services</span></div>
+      <div class="stat"><b data-count={site.regions.length}>{site.regions.length}</b><span class="mono">{site.regions.join(' · ')}</span></div>
+    </div>
+  </section>
+
+  <section class="light section wrap">
+    <div class="reg-head">
+      <div>
+        <p class="eyebrow mono"><span>02</span><span>Client register</span></p>
+        <h2 class="h2">Trusted by government, PSU and <em>institutions.</em></h2>
+      </div>
+      <p>Organisations that have put their grounds in our care, from a railway station to a school playing field.</p>
+    </div>
+    <ClientRegister rows={headline} />
+    <p class="reg-more"><a class="link" href="/clients/">See the full register of {clients.length} clients</a></p>
+  </section>
+
+  <section class="ground" data-ground>
+    <div class="ground-stage">
+      <div class="ground-copy">
+        <div>
+          <p class="eyebrow mono" style="margin-bottom:0"><span>03</span><span>Drawing to ground</span></p>
+        </div>
+        <div class="ground-steps">
+          {process.map((s, i) => (
+            <div class="ground-step">
+              <p class="mono" style="color:var(--saffron)">Stage {i + 1} of 4</p>
+              <h2 class="h2">{s.title}</h2>
+              <p>{s.body}</p>
+            </div>
+          ))}
+        </div>
+        <div class="ground-rail mono" aria-hidden="true">
+          {process.map((s, i) => <span class:list={{ on: i === 0 }}>{s.key}</span>)}
+        </div>
+      </div>
+      <div class="ground-plan"><SitePlan id="ground-plan" /></div>
+    </div>
+  </section>
+
+  <section class="light section wrap">
+    <p class="eyebrow mono"><span>04</span><span>Services</span></p>
+    <div class="disc">
+      <figure class="disc-frame" data-disc-frame style="margin:0">
+        {discPhotos.map((key, i) => (
+          <img class:list={{ on: i === 0 }} data-photo={key} src={photos[key].src} alt="" loading="lazy" decoding="async" />
+        ))}
+        <figcaption class="mono" data-disc-label>{services[0].name}</figcaption>
+      </figure>
+      <div data-disc>
+        {groups.map((g) => (
+          <div class="disc-group">
+            <div class="disc-title mono"><span>{g.name}</span><span>{g.note}</span></div>
+            <div class="disc-list">
+              {services.filter((s) => s.group === g.name).map((s) => (
+                <a href={`/services/${s.slug}/`} data-photo={s.photo} data-name={s.name}>{s.name}<span aria-hidden="true">→</span></a>
+              ))}
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="dark field-sec" data-field>
+    <div class="field-stage">
+      <div class="field-head">
+        <div>
+          <p class="eyebrow mono" style="margin-bottom:1rem"><span>05</span><span>In the field</span></p>
+          <h2 class="h2">From highway medians to <em>water courts.</em></h2>
+        </div>
+        <a class="link" href="/clients/">Clients &amp; work</a>
+      </div>
+      <div class="field-track">
+        {gallery.map((key, i) => (
+          <figure class:list={['shot', `shot-${shape[i]}`]}>
+            <div class="shot-img"><img src={photos[key].src} width={photos[key].width} height={photos[key].height} alt={photos[key].alt} loading="lazy" decoding="async" /></div>
+            <figcaption class="mono"><span>{String(i + 1).padStart(2, '0')}</span><span>{photos[key].caption}</span></figcaption>
+          </figure>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="light section wrap">
+    <p class="eyebrow mono"><span>06</span><span>How we work</span></p>
+    <h2 class="h2" style="max-width:14em">Four principles behind <em>every site.</em></h2>
+    <div class="prin">
+      {principles.map((p, i) => (
+        <article data-rise>
+          <span class="mono">{String(i + 1).padStart(2, '0')}</span>
+          <h3>{p.title}</h3>
+          <p>{p.body}</p>
+        </article>
+      ))}
+    </div>
+  </section>
+
+  <section class="pine section wrap">
+    <div class="note">
+      <p class="eyebrow mono"><span>07</span><span>From the desk</span></p>
+      <div>
+        <blockquote data-rise>We not only provide quality services as per the order received. We give the best services during, and even after, the agreed period.</blockquote>
+        <div class="note-sign" data-rise>
+          <b>{site.chief}</b>
+          <span class="mono">Chief Functionary, {site.legalName}</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="bk section wrap" id="book">
+    <div class="bk-grid">
+      <div>
+        <p class="eyebrow mono"><span>08</span><span>Book a site visit</span></p>
+        <h2 class="display" style="font-size:clamp(2.8rem,6.4vw,6.4rem)">Show us the ground.</h2>
+        <p class="lede" style="margin-top:1.25rem">Tell us where and when. Our team walks the site with you and tells you what it needs.</p>
+        <div class="bk-alt">
+          <a class="link" href={`tel:${site.phone}`}>{site.phoneDisplay}</a>
+          <a class="link" href={`mailto:${site.email}`}>{site.email}</a>
+        </div>
+      </div>
+      <BookingForm />
+    </div>
+  </section>
+</Base>

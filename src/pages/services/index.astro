@@ -1,0 +1,41 @@
+---
+import Base from '../../layouts/Base.astro';
+import SitePlan from '../../components/SitePlan.astro';
+import { groups, services } from '../../lib/services';
+import { whatsappLink } from '../../lib/site';
+---
+<Base title="Landscape Services" description="Eighteen landscape services from IQUE Green India, from hardscape, softscape and water to lawn care, irrigation and annual maintenance contracts." waMessage="Hello IQUE Green India, I would like to know more about your landscape services.">
+  <section class="page-hero">
+    <SitePlan id="sv-plan" seed={2019} notes={false} />
+    <p class="eyebrow mono"><span>Services</span><span>{services.length} disciplines</span></p>
+    <h1 class="display">Everything the <em>ground</em> needs.</h1>
+    <p class="lede">One accountable team, from the first drawing to the yearly maintenance contract.</p>
+  </section>
+
+  <section class="light section wrap">
+    {groups.map((g) => (
+      <div class="svc-group">
+        <div class="svc-side">
+          <h2 class="h2" style="font-size:clamp(2rem,3.2vw,3rem)">{g.name}</h2>
+          <p>{g.note}</p>
+        </div>
+        <div class="svc-cards">
+          {services.filter((s) => s.group === g.name).map((s) => (
+            <a class="svc-card" href={`/services/${s.slug}/`} data-rise>
+              <h3>{s.name}</h3>
+              <p>{s.short}</p>
+            </a>
+          ))}
+        </div>
+      </div>
+    ))}
+  </section>
+
+  <section class="bk section wrap">
+    <h2 class="h2" style="max-width:13em">Not sure what your site needs? We will tell you on the ground.</h2>
+    <div class="hero-actions">
+      <a class="btn" style="background:var(--ink);color:var(--bone)" href="/book/">Book a site visit</a>
+      <a class="btn btn-line" href={whatsappLink('Hello IQUE Green India, I am not sure which service I need. Can you help?')} target="_blank" rel="noopener">Ask on WhatsApp</a>
+    </div>
+  </section>
+</Base>
