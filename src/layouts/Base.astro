@@ -1,0 +1,71 @@
+---
+import '@fontsource/libre-caslon-display/400.css';
+import '@fontsource/libre-caslon-text/400-italic.css';
+import '@fontsource-variable/hanken-grotesk/wght.css';
+import '@fontsource/ibm-plex-mono/400.css';
+import '../styles/global.css';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import { site } from '../lib/site';
+
+interface Props { title: string; description: string; theme?: 'dark' | 'light'; waMessage?: string; home?: boolean }
+const { title, description, theme = 'dark', waMessage, home = false } = Astro.props;
+
+const pageTitle = home ? title : `${title} | ${site.name}`;
+const canonical = new URL(Astro.url.pathname, site.url).href;
+const schema = {
+  '@context': 'https://schema.org',
+  '@type': 'LandscapingBusiness',
+  name: site.legalName,
+  alternateName: site.name,
+  url: site.url,
+  logo: `${site.url}/favicon.svg`,
+  image: `${site.url}/og.jpg`,
+  description: 'Landscape design, construction and maintenance across Uttar Pradesh.',
+  slogan: site.tagline,
+  foundingDate: '2017-12-19',
+  telephone: site.phone,
+  email: site.email,
+  address: {
+    '@type': 'PostalAddress',
+    streetAddress: 'B-1227, Indira Nagar',
+    addressLocality: 'Lucknow',
+    addressRegion: 'Uttar Pradesh',
+    postalCode: '226016',
+    addressCountry: 'IN',
+  },
+  areaServed: site.regions.map((name) => ({ '@type': 'City', name })),
+  knowsAbout: ['Landscape design', 'Vertical gardens', 'Terrace gardens', 'Turf solutions', 'Landscape maintenance'],
+};
+---
+<!doctype html>
+<html lang="en-IN" data-page-theme={theme}>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{pageTitle}</title>
+    <meta name="description" content={description} />
+    <link rel="canonical" href={canonical} />
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <meta name="theme-color" content="#0C1711" />
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content={site.name} />
+    <meta property="og:title" content={pageTitle} />
+    <meta property="og:description" content={description} />
+    <meta property="og:url" content={canonical} />
+    <meta property="og:image" content={`${site.url}/og.jpg`} />
+    <meta property="og:locale" content="en_IN" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <script is:inline type="application/ld+json" set:html={JSON.stringify(schema)}></script>
+    <script is:inline>document.documentElement.classList.add('js');</script>
+  </head>
+  <body>
+    <a class="skip" href="#main">Skip to content</a>
+    <Header />
+    <main id="main"><slot /></main>
+    <Footer waMessage={waMessage} />
+    <script>
+      import '../scripts/motion.ts';
+    </script>
+  </body>
+</html>

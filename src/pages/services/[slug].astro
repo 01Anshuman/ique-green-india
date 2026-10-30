@@ -1,0 +1,61 @@
+---
+import Base from '../../layouts/Base.astro';
+import SitePlan from '../../components/SitePlan.astro';
+import { services, type Service } from '../../lib/services';
+import { photos, whatsappLink } from '../../lib/site';
+
+export const getStaticPaths = () => services.map((service) => ({ params: { slug: service.slug }, props: { service } }));
+
+interface Props { service: Service }
+const { service } = Astro.props;
+const photo = service.photo ? photos[service.photo] : undefined;
+const related = services.filter((s) => s.group === service.group && s.slug !== service.slug).slice(0, 3);
+const message = `Hello IQUE Green India, I am interested in ${service.name}. Can we discuss my site?`;
+---
+<Base title={`${service.name} in Lucknow`} description={`${service.short} ${service.name} by IQUE Green India across Lucknow and Uttar Pradesh. Book a site visit or message us on WhatsApp.`} waMessage={message}>
+  <section class="page-hero">
+    <SitePlan id="sv-plan" seed={service.slug.length * 37} notes={false} />
+    <p class="crumb mono"><a href="/services/">Services</a><span>/</span><span>{service.group}</span></p>
+    <h1 class="display" style="max-width:12em">{service.name}</h1>
+    <p class="lede">{service.short}</p>
+  </section>
+
+  <section class="light section wrap">
+    <div class="sv-body">
+      <div>
+        <p class="lede">{service.intro}</p>
+        <div class="sv-lists">
+          <div>
+            <h2 class="mono">What it covers</h2>
+            <ul>{service.includes.map((x) => <li>{x}</li>)}</ul>
+          </div>
+          <div>
+            <h2 class="mono">Where it suits</h2>
+            <ul>{service.suits.map((x) => <li>{x}</li>)}</ul>
+          </div>
+        </div>
+      </div>
+      <aside class="sv-side">
+        {photo ? (
+          <figure>
+            <div class="shot-img" data-clip><img src={photo.src} width={photo.width} height={photo.height} alt={photo.alt} loading="lazy" decoding="async" /></div>
+            <figcaption class="mono">{photo.caption}</figcaption>
+          </figure>
+        ) : (
+          <div class="sv-plan"><SitePlan id="sv-side-plan" seed={service.name.length * 91} notes={false} /></div>
+        )}
+        <div class="sv-cta">
+          <a class="btn" href={whatsappLink(message)} target="_blank" rel="noopener">Ask about {service.name} on WhatsApp</a>
+          <a class="btn btn-line" href="/book/">Book a site visit</a>
+        </div>
+      </aside>
+    </div>
+  </section>
+
+  <section class="pine section wrap">
+    <p class="eyebrow mono"><span>Related</span><span>{service.group}</span></p>
+    <div class="sv-more">
+      {related.map((s) => <a href={`/services/${s.slug}/`}>{s.name}</a>)}
+    </div>
+  </section>
+</Base>
